@@ -10,7 +10,7 @@ import javafx.util.Pair;
 public class DragContainer implements Serializable {
 
 	/**
-	 * 
+	 * jdjd
 	 */
 	private static final long serialVersionUID = -1890998765646621338L;
 
