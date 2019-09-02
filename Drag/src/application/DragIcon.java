@@ -1,13 +1,13 @@
 package application;
-//8
+
 import java.io.IOException;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.CubicCurve;
 
 public class DragIcon extends AnchorPane{
 	
@@ -56,7 +56,41 @@ public class DragIcon extends AnchorPane{
 		getStyleClass().clear();
 		getStyleClass().add("dragicon");
 		
+		//added because the cubic curve will persist into other icons
+		if (this.getChildren().size() > 0)
+			getChildren().clear();
+		
 		switch (mType) {
+		
+		case cubic_curve:
+			getStyleClass().add("icon-yellow");
+			
+			Pane  pane = new Pane();
+			
+			pane.setPrefWidth(64.0);
+			pane.setPrefHeight(64.0);
+			//pane.getStyleClass().add("icon-blue");
+			pane.setLayoutX(0.0);
+			pane.setLayoutY(0.0);
+			
+			CubicCurve curve = new CubicCurve();
+			
+			curve.setStartX(10.0);
+			curve.setStartY(20.0);
+			curve.setEndX(54.0);
+			curve.setEndY(44.0);
+			curve.setControlX1(64.0);
+			curve.setControlY1(20.0);
+			curve.setControlX2(0.0);
+			curve.setControlY2(44.0);
+			curve.getStyleClass().add("cubic-icon");
+			
+			pane.getChildren().add(curve);
+			
+			//r//oot_pane.
+			getChildren().add(pane);
+			
+		break;
 		
 		case blue:
 			getStyleClass().add("icon-blue");

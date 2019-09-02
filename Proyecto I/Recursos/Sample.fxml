@@ -5,19 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.7575250836120402" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.774247491638796" prefHeight="400.0" prefWidth="600.0">
          <items>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="554.0" prefWidth="438.0" />
-              </content>
-            </ScrollPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <VBox prefHeight="499.0" prefWidth="302.0" />
+                  <VBox prefHeight="559.0" prefWidth="113.0" />
                </content>
             </ScrollPane>
          </items>
