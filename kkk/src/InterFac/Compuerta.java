@@ -1,6 +1,6 @@
 package InterFac;
 
 public interface Compuerta {
-	void conectar();
+	void icono();
 
 }
