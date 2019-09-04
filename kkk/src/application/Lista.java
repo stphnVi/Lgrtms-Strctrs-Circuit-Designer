@@ -9,10 +9,13 @@ public class Lista {
 	private Nodo cabeza;
 	private int tamaño;
 	//contsructor
+	
+	
+	//AGREGUÉ SETTERS AND GETTERS PARA TAMAÑO, AUNQUE NO ERA NECESARIO
 	Lista(){
 		cabeza = null;
 		//tamaño guarda la cantidad de elementos
-		tamaño = 0;	
+		setTamaño(0);	
 	}
 	void agregarDelante(Object o) {
 		if(cabeza ==null){
@@ -23,7 +26,7 @@ public class Lista {
 			nuevo.agregar(temp);
 			cabeza = nuevo;
 		}
-		tamaño++;
+		setTamaño(getTamaño() + 1);
 	}
 	
 	Object ver(int indice) {
@@ -33,5 +36,11 @@ public class Lista {
 		}
 		return temp.VerDato();
 		}
+	public int getTamaño() {
+		return tamaño;
+	}
+	public void setTamaño(int tamaño) {
+		this.tamaño = tamaño;
+	}
 	}
 
