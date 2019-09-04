@@ -17,6 +17,7 @@ public class IPrincipal extends AnchorPane {
 	try { 
 		fxmlLoader.load();
 		Crear();
+		ListaPatillas();
     
 	} catch (IOException exception) {
 	    throw new RuntimeException(exception);
@@ -27,6 +28,14 @@ public class IPrincipal extends AnchorPane {
 		FabCompuertas Fab = new FabCompuertas();
 		Compuerta a2 = Fab.getConexion("And");
 		a2.icono();
+	}
+	
+	public void ListaPatillas() {
+		Lista L = new Lista();
+		L.agregarDelante(6);
+		L.agregarDelante(7);
+		System.out.print(L.ver(1));
+		
 	}
 
 }
