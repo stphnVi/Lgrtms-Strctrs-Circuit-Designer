@@ -1,82 +1,42 @@
 package application;
-
+import javafx.event.ActionEvent;
 import java.io.IOException;
-
-import com.sun.xml.internal.ws.org.objectweb.asm.Label;
 
 import InterFac.Compuerta;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-public class IPrincipal extends AnchorPane {
+public class IPrincipal {
 
-	@FXML VBox left_pane;
-	// Nueva compuerta
-	Image labelImage = new Image(getClass().getResourceAsStream("and.jpg"));
-	private Label label1 = new Label();
-	private Label label2 = new Label();
-	
-	
+	@FXML
+	Button prueba;
 
-	//Llamada a la ventana principal 
+	@FXML
+	VBox paleta;
 
-	public IPrincipal() {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Sample.fxml"));
-		fxmlLoader.setRoot(this); 
-		fxmlLoader.setController(this);
-		
-		
-
-		try { 
-			//Cargar la ventana principal
-			fxmlLoader.load();
-			//Crear compuertas
-			
-			Crear();
-			//Lista
-			ListaPatillas();
-
-		} catch (IOException exception) {
-			throw new RuntimeException(exception);
-		}
+	@FXML
+	public void pressed(ActionEvent e){
+		System.out.println("Pressed");
 	}
 
-	public void Crear() {
-		FabCompuertas Fab = new FabCompuertas();
-		Compuerta a2 = Fab.getConexion("And");
-		a2.icono();
-		
-		
-		//creación del Icono de compuerta
-		label1.relocate(524, 280);
-	    label1.setGraphic(new ImageView(labelImage));
-	    this.getChildren().add(label1);
+	public void agregarImagen(){
+		Image labeImage = new Image(getClass().getResourceAsStream("./and.gif"));
+		Label label1 = new Label();
+		label1.setGraphic(new ImageView(labeImage));
+		paleta.getChildren().add(label1);
 
-	    label2.relocate(250, 200);
-	    label2.setGraphic(new ImageView(labelImage));
-	    this.getChildren().add(label2);
-	    
-	    
-	    left_pane.getChildren().add(labelImage);
-	    
-		
-		
-	}
-
-	public void ListaPatillas() {
-		Lista L = new Lista();
-		L.agregarDelante(6);
-		L.agregarDelante(7);
-		System.out.print(L.ver(1));
-
+		Label label2 = new Label();
+		label2.setGraphic(new ImageView(labeImage));
+		paleta.getChildren().add(label2);
 	}
 
 }
-
 
 
 
