@@ -1,0 +1,15 @@
+.bg-black-style {
+    -fx-background-color:  black;
+    -fx-background-radius: 10; 
+}
+.dragicon {
+	-fx-background-radius: 10; 
+}
+
+.icon-blue {
+	-fx-background-color: blue;
+}
+
+.icon-red {
+	-fx-background-color: red;
+}/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
