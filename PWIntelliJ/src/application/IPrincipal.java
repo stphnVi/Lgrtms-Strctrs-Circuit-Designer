@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class IPrincipal {
+    Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
     Label label1 = new Label();
     Label label2 = new Label();
     private Double lastX = null;
@@ -27,7 +28,6 @@ public class IPrincipal {
     }
 
     public void agregarImagen() {
-        Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
         label1.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label1);
         label2.setGraphic(new ImageView(labeImage));
@@ -49,10 +49,10 @@ public class IPrincipal {
      *
      * */
     public void InitUi() {
-        Image m = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
-    ImageView V= new ImageView();
-    V.setImage(m);
-
+      //Image m = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
+    //ImageView V= new ImageView();
+    //V.setImage(labeImage);
+    //Dragboard db = label2.startDragAndDrop(TransferMode.MOVE);
 
     label2.setScaleX(1.0);
     label2.setScaleY(1.0);
@@ -65,13 +65,12 @@ public class IPrincipal {
                 System.out.println("onDragDetected");
 
                 /* allow MOVE transfer mode */
-                Dragboard db = label2.startDragAndDrop(TransferMode.MOVE);
+               Dragboard db = label2.startDragAndDrop(TransferMode.ANY);
 
                 /* put a string on dragboard */
                 ClipboardContent content = new ClipboardContent();
                 content.putString(label2.getStyle());
                 db.setContent(content);
-
                 event.consume();
             }
         });
@@ -93,7 +92,7 @@ public class IPrincipal {
                 }
 
                 System.out.println("aquí imagen");
-                V.setImage(db.getImage());
+                //V.setImage(db.getImage());
                 event.consume();
             }
         });
@@ -121,7 +120,13 @@ public class IPrincipal {
             public void handle(DragEvent event) {
                 /* mouse moved away, remove the graphical cues */
 
+                if (event.getTarget() instanceof StackPane) {
+                    StackPane target = (StackPane) event.getTarget();
+                    Label source = (Label) event.getGestureSource();
+                    Label toAdd = new Label(source.getText(), source.getGraphic());
 
+                    target.getChildren().add(toAdd);
+                }
                 event.consume();
             }
         });
@@ -132,6 +137,7 @@ public class IPrincipal {
             public void handle(DragEvent event) {
                 /* the drag-and-drop gesture ended */
                 System.out.println("onDragDone");
+               // V.setImage(db.getImage());
                 /* if the data was successfully moved, clear it */
 
                 event.consume();
