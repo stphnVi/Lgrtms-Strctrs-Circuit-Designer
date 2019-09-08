@@ -1,5 +1,6 @@
 package application;
-
+import InterFac.Compuerta;
+import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.event.EventHandler;
@@ -8,15 +9,24 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
+import java.awt.geom.Point2D;
 
-public class IPrincipal {
+public class IPrincipal extends AnchorPane {
     Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
     Label label1 = new Label();
     Label label2 = new Label();
+    Label lab = new Label();
     private Double lastX = null;
     private Double lastY = null;
+    double orgSceneX, orgSceneY;
+    double orgTranslateX, orgTranslateY;
     @FXML
     VBox paleta;
 
@@ -32,6 +42,8 @@ public class IPrincipal {
         paleta.getChildren().add(label1);
         label2.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label2);
+
+
         //dragable label
         InitUi();
     }
@@ -78,6 +90,7 @@ public class IPrincipal {
             @Override
             public void handle(DragEvent event) {
                 /* data is dragged over the target */
+
                 System.out.println("onDragOver");
 
                 /* accept it only if it is  not dragged from the same node
@@ -87,8 +100,16 @@ public class IPrincipal {
                 if (event.getGestureSource() != interfaz &&
                         event.getDragboard().hasString()) {
                     /* allow for moving */
-                    event.acceptTransferModes(TransferMode.MOVE);
+                    event.acceptTransferModes(TransferMode.ANY);
 
+                    //label2.relocate(event.getSceneX(),event.getSceneY());
+
+                    //label2.setTranslateX(event.getSceneX());
+                    //label2.setTranslateY(event.getSceneY());
+
+
+                    System.out.println(event.getSceneX());
+                    System.out.println(event.getSceneY());
                 }
 
                 System.out.println("aquí imagen");
@@ -97,24 +118,19 @@ public class IPrincipal {
             }
         });
 
-        interfaz.setOnDragEntered(new EventHandler <DragEvent>() {
+        /*interfaz.setOnDragEntered(new EventHandler <DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                /* the drag-and-drop gesture entered the target */
+                // the drag-and-drop gesture entered the target
                 System.out.println("onDragEntered");
-                /* show to the user that it is an actual gesture target */
+                // show to the user that it is an actual gesture target
                 if (event.getGestureSource() != interfaz &&
                         event.getDragboard().hasImage()) {
-
-
-
                 }
-
-
                 event.consume();
             }
         });
-
+*/
         interfaz.setOnDragExited(new EventHandler <DragEvent>() {
             @Override
             public void handle(DragEvent event) {
@@ -124,11 +140,13 @@ public class IPrincipal {
                     StackPane target = (StackPane) event.getTarget();
                     Label source = (Label) event.getGestureSource();
                     Label toAdd = new Label(source.getText(), source.getGraphic());
-
                     target.getChildren().add(toAdd);
+                    toAdd.setGraphic(new ImageView(labeImage));
                 }
                 event.consume();
+
             }
+
         });
 
 
@@ -141,6 +159,7 @@ public class IPrincipal {
                 /* if the data was successfully moved, clear it */
 
                 event.consume();
+
             }
         });
 
