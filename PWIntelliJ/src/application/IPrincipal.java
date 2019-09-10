@@ -16,7 +16,7 @@ import javafx.scene.input.TransferMode;
 
 public class IPrincipal extends AnchorPane {
      Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
-    static Label label1 = new Label();
+
     static  Label label2 = new Label();
     static Label lab = new Label();
     static int X = 0;
@@ -25,16 +25,20 @@ public class IPrincipal extends AnchorPane {
     VBox paleta;
 
     @FXML
+    AnchorPane papel;
+
+    @FXML
     StackPane interfaz;
 
     public IPrincipal() {
 
-
     }
 
+    /***
+     * Método que agrega la imagen a el label y lo coloca en la paleta /DEBE CAMBIARSE
+     */
+
     public void agregarImagen() {
-        label1.setGraphic(new ImageView(labeImage));
-        paleta.getChildren().add(label1);
         label2.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label2);
         InitUi();
@@ -43,8 +47,20 @@ public class IPrincipal extends AnchorPane {
 
 
     public void InitUi() {
+        /***
+         * método que se encarga de pedirle a la fabrida las compuertas
+         * @param interfaz AnchorPane donde se hará el diagrama.
+         * @param Label2 Label en cual tiene una imagen la cual simula una compuerta.
+         *
+         */
         label2.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
+            /***
+             *
+             * @see
+             * MouseEvent se encarga de hacer la llamada a la clase
+             * FabCompuertas, que se encarfa de crear las mimas.
+             */
             public void handle(MouseEvent event) {
                 System.out.println("se ha clickeado la compuerta");
                 FabCompuertas fabricar = new FabCompuertas();
@@ -55,6 +71,12 @@ public class IPrincipal extends AnchorPane {
         });
         label2.setOnDragDetected(new EventHandler <MouseEvent>() {
             @Override
+            /***
+             *
+             * @see
+             * una vez creada la compuerta en la fabrica
+             * regresa para seguir el curso
+             */
             public void handle(MouseEvent event) {
                 System.out.println("se ha seleccionado la compuerta");
                 Dragboard db = label2.startDragAndDrop(TransferMode.MOVE);
@@ -68,6 +90,12 @@ public class IPrincipal extends AnchorPane {
         });
         interfaz.setOnDragOver(new EventHandler <DragEvent>() {
             @Override
+            /***
+             * @see
+             * DragEvent se encarga de darle seguimiento al label
+             * y el mouse y crear la nueva compuerta en la interfaz de usuario
+             * //DEBE TENER SU RESPETIVA IMAGEN
+             */
             public void handle(DragEvent event) {
                 System.out.println("compuerta arrastrándose");
                 Dragboard db = event.getDragboard();
@@ -86,14 +114,23 @@ public class IPrincipal extends AnchorPane {
         });
         interfaz.setOnDragExited(new EventHandler <DragEvent>() {
             @Override
+            /***
+             * @see
+             * DragEvent es el que debe reubicar el label según las coordenadas
+             * del cursor en X y Y
+             */
             public void handle(DragEvent event) {
                 if (event.getTarget() instanceof StackPane) {
-                    StackPane target = (StackPane) event.getTarget();
+                    //StackPane target = (StackPane) event.getTarget();
                     Label source = (Label) event.getGestureSource();
-                    Label toAdd = new Label(source.getText(), source.getGraphic());
+                    Label toAdd = new Label();
+                    toAdd.setGraphic(new ImageView(labeImage));
                     System.out.println("no sé que hace");
                     //la cambié por interfaz, antes era target
-                    interfaz.getChildren().add(toAdd);
+                    toAdd.setTranslateX(event.getSceneX());
+                    toAdd.setTranslateY(event.getSceneY());
+
+                    papel.getChildren().add(toAdd);
                     toAdd.setGraphic(new ImageView(labeImage));
                     System.out.println(event.getSceneX());
                     System.out.println(event.getSceneY());
@@ -102,8 +139,15 @@ public class IPrincipal extends AnchorPane {
             }
         });
 
+
         label2.setOnDragDone(new EventHandler <DragEvent>() {
             @Override
+            /***
+             *
+             * @see
+             * DragEvent ahora se encargará de avisar que la compuerta está en posición
+             *
+             */
             public void handle(DragEvent event) {
 
                 System.out.println(event.getSceneX());
@@ -116,151 +160,4 @@ public class IPrincipal extends AnchorPane {
     }
 }
 
-/*
-final int numNodes = 6;
 
-    private double x = 0;
-    private double y = 0;
-    // mouse position
-    private double mousex = 0;
-    private double mousey = 0;
-    private boolean dragging = false;
-    private boolean moveToFront = true;
-    //final int numNodes   =  6; // number of nodes to add
-    final double spacing = 30;
-
-        for(int i = 0; i < numNodes; i++) {
-            DraggableNode node = new DraggableNode();
-            node.setPrefSize(98, 80);
-            // define the style via css
-            node.setStyle(
-                    "-fx-background-color: #334488; "
-                            + "-fx-text-fill: black; "
-                            + "-fx-border-color: black;") ;
-
-        // add the node to the root pane
-
-        //label1.setGraphic(new ImageView(labeImage));
-        //paleta.getChildren().add(label1);
-        //label2.setGraphic(new ImageView(labeImage));
-            paleta.getChildren().add(node);
-        //dragable label
-}
-    }
-
-    class DraggableNode extends AnchorPane{
-        // node position
-        private double x = 0;
-        private double y = 0;
-        // mouse position
-        private double mousex = 0;
-        private double mousey = 0;
-        private Node view;
-        private boolean dragging = false;
-        private boolean moveToFront = true;
-
-        public DraggableNode() {
-            init();
-        }
-
-        public DraggableNode(Node view) {
-            this.view = view;
-
-            getChildren().add(view);
-            init();
-        }
-
-        private void init() {
-
-            onMousePressedProperty().set(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-
-                    // record the current mouse X and Y position on Node
-                    mousex = event.getSceneX();
-                    mousey = event.getSceneY();
-
-                    x = getLayoutX();
-                    y = getLayoutY();
-
-                    if (isMoveToFront()) {
-                        toFront();
-
-                    }
-                    System.out.println("Nodo Presionado");
-                }
-            });
-
-            //Event Listener for MouseDragged
-            onMouseDraggedProperty().set(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-
-                    //Node source = (Node) event.getGestureSource();
-                    //toAdd.setGraphic(view);
-
-                    // Get the exact moved X and Y
-
-                    double offsetX = event.getSceneX() - mousex;
-                    double offsetY = event.getSceneY() - mousey;
-
-                    x += offsetX;
-                    y += offsetY;
-
-                    double scaledX = x;
-                    double scaledY = y;
-
-                    setLayoutX(scaledX);
-                    setLayoutY(scaledY);
-
-                    dragging = true;
-
-                    // again set current Mouse x AND y position
-                    mousex = event.getSceneX();
-                    mousey = event.getSceneY();
-                    System.out.println("Nodo arrastrandose");
-
-                    event.consume();
-                }
-            });
-
-            onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-
-                    dragging = false;
-                    System.out.println("Nodo en posición");
-                }
-            });
-
-        }
-
-
-        protected boolean isDragging() {
-            return dragging;
-        }
-
-
-
-
-        public Node getView() {
-        return view;
-        }
-
-
-
-        public void setMoveToFront(boolean moveToFront) {
-            this.moveToFront = moveToFront;
-        }
-
-
-        public boolean isMoveToFront() {
-            return moveToFront;
-        }
-
-        public void removeNode(Node n) {
-            getChildren().remove(n);
-
-        }
-    }
-    */
