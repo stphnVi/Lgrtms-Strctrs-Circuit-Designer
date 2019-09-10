@@ -1,10 +1,7 @@
 package application;
 import InterFac.Compuerta;
 import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,25 +13,23 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import java.awt.geom.Point2D;
 
 public class IPrincipal extends AnchorPane {
-    Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
-    Label label1 = new Label();
-    Label label2 = new Label();
-    Label lab = new Label();
-    private Double lastX = null;
-    private Double lastY = null;
-    double orgSceneX, orgSceneY;
-    double orgTranslateX, orgTranslateY;
+     Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
+    static Label label1 = new Label();
+    static  Label label2 = new Label();
+    static Label lab = new Label();
+    static int X = 0;
+
     @FXML
     VBox paleta;
 
     @FXML
     StackPane interfaz;
 
-    public void pressed(ActionEvent e) {
-        System.out.println("Pressed");
+    public IPrincipal() {
+
+
     }
 
     public void agregarImagen() {
@@ -42,126 +37,230 @@ public class IPrincipal extends AnchorPane {
         paleta.getChildren().add(label1);
         label2.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label2);
-
-
-        //dragable label
         InitUi();
     }
 
 
-    /*
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     * */
+
     public void InitUi() {
-      //Image m = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
-    //ImageView V= new ImageView();
-    //V.setImage(labeImage);
-    //Dragboard db = label2.startDragAndDrop(TransferMode.MOVE);
+        label2.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("se ha clickeado la compuerta");
+                FabCompuertas fabricar = new FabCompuertas();
+                Compuerta and = fabricar.getConexion("And");
+                and.icono();
 
-    label2.setScaleX(1.0);
-    label2.setScaleY(1.0);
-
+            }
+        });
         label2.setOnDragDetected(new EventHandler <MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
-                /* drag was detected, start drag-and-drop gesture*/
-                System.out.println("onDragDetected");
-
-                /* allow MOVE transfer mode */
-               Dragboard db = label2.startDragAndDrop(TransferMode.ANY);
-
-                /* put a string on dragboard */
+                System.out.println("se ha seleccionado la compuerta");
+                Dragboard db = label2.startDragAndDrop(TransferMode.MOVE);
                 ClipboardContent content = new ClipboardContent();
                 content.putString(label2.getStyle());
                 db.setContent(content);
+
                 event.consume();
+
             }
         });
         interfaz.setOnDragOver(new EventHandler <DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                /* data is dragged over the target */
-
-                System.out.println("onDragOver");
-
-                /* accept it only if it is  not dragged from the same node
-                 * and if it has a string data */
+                System.out.println("compuerta arrastrándose");
                 Dragboard db = event.getDragboard();
 
                 if (event.getGestureSource() != interfaz &&
                         event.getDragboard().hasString()) {
-                    /* allow for moving */
                     event.acceptTransferModes(TransferMode.ANY);
-
-                    //label2.relocate(event.getSceneX(),event.getSceneY());
-
-                    //label2.setTranslateX(event.getSceneX());
-                    //label2.setTranslateY(event.getSceneY());
-
-
+                    label2.setGraphic(new ImageView(labeImage));
                     System.out.println(event.getSceneX());
                     System.out.println(event.getSceneY());
                 }
 
                 System.out.println("aquí imagen");
-                //V.setImage(db.getImage());
                 event.consume();
             }
         });
-
-        /*interfaz.setOnDragEntered(new EventHandler <DragEvent>() {
-            @Override
-            public void handle(DragEvent event) {
-                // the drag-and-drop gesture entered the target
-                System.out.println("onDragEntered");
-                // show to the user that it is an actual gesture target
-                if (event.getGestureSource() != interfaz &&
-                        event.getDragboard().hasImage()) {
-                }
-                event.consume();
-            }
-        });
-*/
         interfaz.setOnDragExited(new EventHandler <DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                /* mouse moved away, remove the graphical cues */
-
                 if (event.getTarget() instanceof StackPane) {
                     StackPane target = (StackPane) event.getTarget();
                     Label source = (Label) event.getGestureSource();
                     Label toAdd = new Label(source.getText(), source.getGraphic());
-                    target.getChildren().add(toAdd);
+                    System.out.println("no sé que hace");
+                    //la cambié por interfaz, antes era target
+                    interfaz.getChildren().add(toAdd);
                     toAdd.setGraphic(new ImageView(labeImage));
+                    System.out.println(event.getSceneX());
+                    System.out.println(event.getSceneY());
                 }
                 event.consume();
-
-            }/*c*/
-
+            }
         });
-
 
         label2.setOnDragDone(new EventHandler <DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                /* the drag-and-drop gesture ended */
-                System.out.println("onDragDone");
-               // V.setImage(db.getImage());
-                /* if the data was successfully moved, clear it */
 
+                System.out.println(event.getSceneX());
+                System.out.println(event.getSceneY());
+                System.out.println("compuerta en posición");
                 event.consume();
 
             }
         });
-
     }
 }
+
+/*
+final int numNodes = 6;
+
+    private double x = 0;
+    private double y = 0;
+    // mouse position
+    private double mousex = 0;
+    private double mousey = 0;
+    private boolean dragging = false;
+    private boolean moveToFront = true;
+    //final int numNodes   =  6; // number of nodes to add
+    final double spacing = 30;
+
+        for(int i = 0; i < numNodes; i++) {
+            DraggableNode node = new DraggableNode();
+            node.setPrefSize(98, 80);
+            // define the style via css
+            node.setStyle(
+                    "-fx-background-color: #334488; "
+                            + "-fx-text-fill: black; "
+                            + "-fx-border-color: black;") ;
+
+        // add the node to the root pane
+
+        //label1.setGraphic(new ImageView(labeImage));
+        //paleta.getChildren().add(label1);
+        //label2.setGraphic(new ImageView(labeImage));
+            paleta.getChildren().add(node);
+        //dragable label
+}
+    }
+
+    class DraggableNode extends AnchorPane{
+        // node position
+        private double x = 0;
+        private double y = 0;
+        // mouse position
+        private double mousex = 0;
+        private double mousey = 0;
+        private Node view;
+        private boolean dragging = false;
+        private boolean moveToFront = true;
+
+        public DraggableNode() {
+            init();
+        }
+
+        public DraggableNode(Node view) {
+            this.view = view;
+
+            getChildren().add(view);
+            init();
+        }
+
+        private void init() {
+
+            onMousePressedProperty().set(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+
+                    // record the current mouse X and Y position on Node
+                    mousex = event.getSceneX();
+                    mousey = event.getSceneY();
+
+                    x = getLayoutX();
+                    y = getLayoutY();
+
+                    if (isMoveToFront()) {
+                        toFront();
+
+                    }
+                    System.out.println("Nodo Presionado");
+                }
+            });
+
+            //Event Listener for MouseDragged
+            onMouseDraggedProperty().set(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+
+                    //Node source = (Node) event.getGestureSource();
+                    //toAdd.setGraphic(view);
+
+                    // Get the exact moved X and Y
+
+                    double offsetX = event.getSceneX() - mousex;
+                    double offsetY = event.getSceneY() - mousey;
+
+                    x += offsetX;
+                    y += offsetY;
+
+                    double scaledX = x;
+                    double scaledY = y;
+
+                    setLayoutX(scaledX);
+                    setLayoutY(scaledY);
+
+                    dragging = true;
+
+                    // again set current Mouse x AND y position
+                    mousex = event.getSceneX();
+                    mousey = event.getSceneY();
+                    System.out.println("Nodo arrastrandose");
+
+                    event.consume();
+                }
+            });
+
+            onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+
+                    dragging = false;
+                    System.out.println("Nodo en posición");
+                }
+            });
+
+        }
+
+
+        protected boolean isDragging() {
+            return dragging;
+        }
+
+
+
+
+        public Node getView() {
+        return view;
+        }
+
+
+
+        public void setMoveToFront(boolean moveToFront) {
+            this.moveToFront = moveToFront;
+        }
+
+
+        public boolean isMoveToFront() {
+            return moveToFront;
+        }
+
+        public void removeNode(Node n) {
+            getChildren().remove(n);
+
+        }
+    }
+    */
