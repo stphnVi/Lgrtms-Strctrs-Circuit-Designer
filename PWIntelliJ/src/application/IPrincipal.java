@@ -1,4 +1,5 @@
 package application;
+import Compuertas.And;
 import InterFac.Compuerta;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,11 +16,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 
 public class IPrincipal extends AnchorPane {
-     Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
+    Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
+    public  Label label = new Label();
+    Label current = null;
 
-    static  Label label2 = new Label();
-    static Label lab = new Label();
-    static int X = 0;
 
     @FXML
     VBox paleta;
@@ -39,8 +39,8 @@ public class IPrincipal extends AnchorPane {
      */
 
     public void agregarImagen() {
-        label2.setGraphic(new ImageView(labeImage));
-        paleta.getChildren().add(label2);
+        label.setGraphic(new ImageView(labeImage));
+        paleta.getChildren().add(label);
         InitUi();
     }
 
@@ -50,26 +50,33 @@ public class IPrincipal extends AnchorPane {
         /***
          * método que se encarga de pedirle a la fabrida las compuertas
          * @param interfaz AnchorPane donde se hará el diagrama.
-         * @param Label2 Label en cual tiene una imagen la cual simula una compuerta.
+         * @param Label Label en cual tiene una imagen la cual simula una compuerta.
          *
          */
-        label2.setOnMousePressed(new EventHandler<MouseEvent>() {
+        label.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+            //if para saber que compuerta se seleccionó y crear una nueva
             @Override
             /***
              *
              * @see
              * MouseEvent se encarga de hacer la llamada a la clase
-             * FabCompuertas, que se encarfa de crear las mimas.
+             * FabCompuertas, que se encarga de crear las mismas.
              */
             public void handle(MouseEvent event) {
                 System.out.println("se ha clickeado la compuerta");
-                FabCompuertas fabricar = new FabCompuertas();
-                Compuerta and = fabricar.getConexion("And");
-                and.icono();
+                FabCompuertas fabrica = new FabCompuertas();
+                Compuerta compuerta = fabrica.getConexion("And");
+                compuerta.setIcono();
+
+                //label = compuerta.getLabel();
+                //Compuerta and = fabricar.getConexion("And");
+                //and.setIcono();
+
 
             }
         });
-        label2.setOnDragDetected(new EventHandler <MouseEvent>() {
+        label.setOnDragDetected(new EventHandler <MouseEvent>() {
             @Override
             /***
              *
@@ -79,11 +86,10 @@ public class IPrincipal extends AnchorPane {
              */
             public void handle(MouseEvent event) {
                 System.out.println("se ha seleccionado la compuerta");
-                Dragboard db = label2.startDragAndDrop(TransferMode.MOVE);
+                Dragboard db = label.startDragAndDrop(TransferMode.MOVE);
                 ClipboardContent content = new ClipboardContent();
-                content.putString(label2.getStyle());
+                content.putString(label.getStyle());
                 db.setContent(content);
-
                 event.consume();
 
             }
@@ -103,7 +109,7 @@ public class IPrincipal extends AnchorPane {
                 if (event.getGestureSource() != interfaz &&
                         event.getDragboard().hasString()) {
                     event.acceptTransferModes(TransferMode.ANY);
-                    label2.setGraphic(new ImageView(labeImage));
+                    //label.setGraphic(new ImageView(labeImage));
                     System.out.println(event.getSceneX());
                     System.out.println(event.getSceneY());
                 }
@@ -122,6 +128,9 @@ public class IPrincipal extends AnchorPane {
             public void handle(DragEvent event) {
                 if (event.getTarget() instanceof StackPane) {
                     //StackPane target = (StackPane) event.getTarget();
+
+                    //FabCompuertas fabrica = new FabCompuertas();
+                    //Compuerta compuerta = fabrica.getConexion("And");
                     Label source = (Label) event.getGestureSource();
                     Label toAdd = new Label();
                     toAdd.setGraphic(new ImageView(labeImage));
@@ -134,13 +143,34 @@ public class IPrincipal extends AnchorPane {
                     toAdd.setGraphic(new ImageView(labeImage));
                     System.out.println(event.getSceneX());
                     System.out.println(event.getSceneY());
+                    /*
+
+
+
+                    //StackPane target = (StackPane) event.getTarget();
+                    Label source = (Label) event.getGestureSource();
+                    Label toAdd = new Label();
+                    //FabCompuertas fabrica = new FabCompuertas();
+                    //Compuerta compuerta = fabrica.getConexion("And");
+                    //compuerta.setIcono();
+
+
+                   //toAdd.setGraphic(new ImageView(compuerta.getImage()));
+                    System.out.println("no sé que hace");
+                    //la cambié por interfaz, antes era target
+                    toAdd.setTranslateX(event.getSceneX());
+                    toAdd.setTranslateY(event.getSceneY());
+
+                    papel.getChildren().add(toAdd);
+                   toAdd.setGraphic(new ImageView("/.Compuerta"));
+*/
                 }
                 event.consume();
             }
         });
 
 
-        label2.setOnDragDone(new EventHandler <DragEvent>() {
+        label.setOnDragDone(new EventHandler <DragEvent>() {
             @Override
             /***
              *
