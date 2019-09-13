@@ -23,13 +23,13 @@ public class Or implements Compuerta {
         IPrincipal devolver = new IPrincipal();
         devolver.onMousePressedProperty();
     }
+
     public Label getLabel() {
         return label;
     }
     public Image getImage() {
         return imagen;
     }
-
 
 }
 
