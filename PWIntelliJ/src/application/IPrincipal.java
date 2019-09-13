@@ -15,11 +15,9 @@ import javafx.scene.shape.*;
 public class IPrincipal extends AnchorPane {
     Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
     public  Label label = new Label();
-    Label current = null;
-    public Label labelpeq = new Label();
-    private int repetir = 0;
+    FabCompuertas fabrica = new FabCompuertas();
 
-    Line line = new Line();
+
     @FXML
     VBox paleta;
 
@@ -39,9 +37,19 @@ public class IPrincipal extends AnchorPane {
      */
 
     public void agregarImagen() {
+
         label.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label);
+        /*
+        FabCompuertas fabrica = new FabCompuertas();
+        Compuerta compuerta = fabrica.getConexion("And");
+        compuerta.setIcono();
+
+*/
         InitUi();
+
+
+
     }
 
 
@@ -53,25 +61,16 @@ public class IPrincipal extends AnchorPane {
          * @param Label Label en cual tiene una imagen la cual simula una compuerta.
          *
          */
+
         label.setOnMousePressed(new EventHandler<MouseEvent>() {
 
             //if para saber que compuerta se seleccionó y crear una nueva
             @Override
-            /***
-             *
-             * @see
-             * MouseEvent se encarga de hacer la llamada a la clase
-             * FabCompuertas, que se encarga de crear las mismas.
-             */
             public void handle(MouseEvent event) {
                 System.out.println("se ha clickeado la compuerta");
-                FabCompuertas fabrica = new FabCompuertas();
-                Compuerta compuerta = fabrica.getConexion("And");
-                compuerta.setIcono();
-
-                label = compuerta.getLabel();
-
-
+                //label = compuerta.getLabel();
+                Compuerta and = fabrica.getConexion("And");
+                and.Icono();
 
             }
         });
@@ -229,12 +228,10 @@ public class IPrincipal extends AnchorPane {
             endXProperty().bind(endX);
             endYProperty().bind(endY);
             setStrokeWidth(2);
-            
+            setStroke(Color.GRAY.deriveColor(0, 1, 1, 0.5));
+            setStrokeLineCap(StrokeLineCap.BUTT);
             getStrokeDashArray().setAll(10.0, 5.0);
             setMouseTransparent(true);
-
-
-
 
         }
 
@@ -300,7 +297,9 @@ public class IPrincipal extends AnchorPane {
         }
 
         // records relative x and y co-ordinates.
-        private class Delta { double x, y; }
+        private class Delta {
+            double x, y;
+        }
     }
 
 }

@@ -8,13 +8,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class And implements Compuerta {
+    /*
     private Image imagen = new Image(getClass().getResourceAsStream("./Compuerta.png"));
     private Label label =new Label();
     public int Entradas = 0;
     public int Salida = 0;
+    */
+
     @Override
-    public void setIcono() {
-        label.setGraphic(new ImageView(imagen));
+    public void Icono() {
+        //label.setGraphic(new ImageView(imagen));
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
@@ -23,10 +26,11 @@ public class And implements Compuerta {
         System.out.print("Se ha creado una compuerta AND");
         IPrincipal devolver = new IPrincipal();
         devolver.onMousePressedProperty();
-    }
 
+    }
+/*
     public void Operacion(int in , int out){
-        /*
+
         Nodo ent1 = new Nodo(1);
         Nodo ent2 = new Nodo(0);
         if(ent1==1 && ent2 ==1){
@@ -38,7 +42,7 @@ public class And implements Compuerta {
             Nodo salida= new Nodo(n);
             return salida;
 
-         */
+
         }
 
         //liked list
@@ -52,6 +56,6 @@ public class And implements Compuerta {
         label.setGraphic(new ImageView(imagen));
         return imagen;
     }
-
+*/
 
 }

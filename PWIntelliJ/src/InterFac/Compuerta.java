@@ -7,10 +7,10 @@ import javafx.scene.control.Label;
 
 public interface Compuerta {
 
-    void setIcono();
-
+    void Icono();
+/*
     Label getLabel();
     Image getImage();
-
+*/
 
 }
