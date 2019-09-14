@@ -27,7 +27,10 @@ public class IPrincipal extends AnchorPane {
     @FXML
     StackPane interfaz;
 
-    public IPrincipal() { }
+    public IPrincipal() {
+
+
+    }
 
     /***
      * Método que agrega la imagen a el label y lo coloca en la paleta /DEBE CAMBIARSE
@@ -36,7 +39,6 @@ public class IPrincipal extends AnchorPane {
     public void agregarImagen() {
         label.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label);
-
         label2.setGraphic(new ImageView(labeImage2));
         paleta.getChildren().add(label2);
         InitUi();
@@ -58,6 +60,8 @@ public class IPrincipal extends AnchorPane {
             //if para saber que compuerta se seleccionó y crear una nueva
             @Override
             public void handle(MouseEvent event) {
+                // hacer un if que obtenga una referencia  de las compuertas
+                //y que se fije en el label seleccionado
                 System.out.println("se ha clickeado la compuerta");
                 //label = compuerta.getLabel();
                 Compuerta and = fabrica.getConexion("And");
