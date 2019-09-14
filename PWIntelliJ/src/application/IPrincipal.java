@@ -1,5 +1,4 @@
 package application;
-import Compuertas.And;
 import InterFac.Compuerta;
 import javafx.beans.property.*;
 import javafx.event.EventHandler;
@@ -14,9 +13,10 @@ import javafx.scene.shape.*;
 
 public class IPrincipal extends AnchorPane {
     Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
-    public  Label label = new Label();
+    Image labeImage2 = new Image(getClass().getResourceAsStream("./or.png"), 80, 120, true, true);
+    private  Label label = new Label();
+    public Label label2 = new Label();
     FabCompuertas fabrica = new FabCompuertas();
-
 
     @FXML
     VBox paleta;
@@ -27,30 +27,21 @@ public class IPrincipal extends AnchorPane {
     @FXML
     StackPane interfaz;
 
-    public IPrincipal() {
-
-
-    }
+    public IPrincipal() { }
 
     /***
      * Método que agrega la imagen a el label y lo coloca en la paleta /DEBE CAMBIARSE
      */
 
     public void agregarImagen() {
-
         label.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label);
-        /*
-        FabCompuertas fabrica = new FabCompuertas();
-        Compuerta compuerta = fabrica.getConexion("And");
-        compuerta.setIcono();
 
-*/
+        label2.setGraphic(new ImageView(labeImage2));
+        paleta.getChildren().add(label2);
         InitUi();
-
-
-
     }
+
 
 
     public void InitUi(){
@@ -107,7 +98,6 @@ public class IPrincipal extends AnchorPane {
                 System.out.println(event.getDragboard());
 
                 if (event.getGestureSource() != interfaz && event.getDragboard().hasString()) { event.acceptTransferModes(TransferMode.MOVE);
-                    //label.setGraphic(new ImageView(labeImage));
                     System.out.println(event.getSceneX());
                     System.out.println(event.getSceneY());
                     System.out.println("SetOnDragOver-If");
@@ -115,7 +105,7 @@ public class IPrincipal extends AnchorPane {
                     System.out.println("SetOnDragOver-Else");
 
                 }
-                //System.out.println("SetOnDragOver-seguir para reubicar");
+
                 event.consume();
                 System.out.println("SetOnDragOver-Salida");
             }
@@ -133,32 +123,14 @@ public class IPrincipal extends AnchorPane {
                 if (event.getTarget() instanceof StackPane) {
                     System.out.println(event.getTarget());
                     System.out.println("Choque de compuertas");
-
-
-                    //FabCompuertas fabrica = new FabCompuertas();
-                    //Compuerta compuerta = fabrica.getConexion("And");
-
                 }
-
-               // if(event.getDragboard() ==)
                 Label source = (Label) event.getGestureSource();
                 Label toAdd = new Label();
 
                 toAdd.setGraphic(new ImageView(labeImage));
-                //Regtangle patilla = new Regtangle;
-                //Rectangle rectangle = new Rectangle(10, 10, 10, 10);
-
-                //StackPane target = new StackPane(rectangle,toAdd);
-
-                //System.out.println("no sé que hace");
-                //la cambié por interfaz, antes era target
                 toAdd.setTranslateX(event.getSceneX());
                 toAdd.setTranslateY(event.getSceneY());
-                //toAdd.getChildren().add(labelpeq);
-
                 papel.getChildren().add(toAdd);
-                //toAdd.setGraphic(new ImageView(labeImage));
-
                 System.out.println("SetOnDragExited-coordenadas de to Add");
                 System.out.println(event.getSceneY());
                 System.out.println(event.getSceneX());
@@ -172,25 +144,13 @@ public class IPrincipal extends AnchorPane {
                 DoubleProperty startY = new SimpleDoubleProperty(event.getY());
                 DoubleProperty endX = new SimpleDoubleProperty(event.getX());
                 DoubleProperty endY = new SimpleDoubleProperty(event.getY());
-
-
                 IPrincipal.Anchor start = new IPrincipal.Anchor(Color.PALEGREEN, startX, startY);
                 IPrincipal.Anchor end  = new IPrincipal.Anchor(Color.TOMATO, endX, endY);
-
                 papel.getChildren().add(start);
                 papel.getChildren().add(end);
-
                 Line line = new IPrincipal.BoundLine(startX, startY, endX, endY, toAdd);
-                //StackPane stackPaneLeft = new StackPane();
-                //stackPaneLeft.setStyle("-fx-background-color: yellow");
-                //stackPaneLeft.setPrefSize(40, 80);
-
                 System.out.println(event.getDragboard());
-                //papel.getChildren().add(stackPaneLeft);
-
                 papel.getChildren().add(line);
-
-
                 event.consume();
                 System.out.println("SetOnDragExited-Salida");
             }
@@ -246,9 +206,9 @@ public class IPrincipal extends AnchorPane {
             setStroke(color);
             setStrokeWidth(2);
             setStrokeType(StrokeType.OUTSIDE);
-
             x.bind(centerXProperty());
             y.bind(centerYProperty());
+           //------if()
             enableDrag();
         }
 

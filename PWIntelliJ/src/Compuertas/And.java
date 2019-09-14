@@ -2,18 +2,19 @@ package Compuertas;
 
 import InterFac.Compuerta;
 import application.IPrincipal;
-import application.Nodo;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 
 public class And implements Compuerta {
     /*
-    private Image imagen = new Image(getClass().getResourceAsStream("./Compuerta.png"));
-    private Label label =new Label();
+    POR ALGUNA RAZON DAN ERROR
+
+    public Image imagen = new Image(getClass().getResourceAsStream("./Compuerta.png"));
+    public Label label =new Label();
+
+     */
     public int Entradas = 0;
     public int Salida = 0;
-    */
+
 
     @Override
     public void Icono() {

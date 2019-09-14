@@ -2,15 +2,13 @@ package Compuertas;
 
 import InterFac.Compuerta;
 import application.IPrincipal;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 
 public class Or implements Compuerta {
     /*
-    private Image imagen = new Image(getClass().getResourceAsStream("./Compuerta.png"));
-
-    private Label label =new Label();
+    POR ALGUNA RAZON DAN ERROR
+    public Image imagen = new Image(getClass().getResourceAsStream("./Compuerta.png"));
+    public Label label =new Label();
 
      */
     @Override
@@ -26,7 +24,7 @@ public class Or implements Compuerta {
         IPrincipal devolver = new IPrincipal();
         devolver.onMousePressedProperty();
     }
-/*
+/*}
     public Label getLabel() {
         return label;
     }
