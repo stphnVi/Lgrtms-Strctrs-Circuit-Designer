@@ -2,23 +2,27 @@ package Compuertas;
 
 import InterFac.Compuerta;
 import application.IPrincipal;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 public class And implements Compuerta {
-    /*
-    POR ALGUNA RAZON DAN ERROR
 
-    public Image imagen = new Image(getClass().getResourceAsStream("./Compuerta.png"));
+    //POR ALGUNA RAZON DAN ERROR
+
+    public Image imagen = new Image(getClass().getResourceAsStream("../application/Compuerta.png"));
     public Label label =new Label();
 
-     */
+
+
     public int Entradas = 0;
     public int Salida = 0;
 
 
     @Override
     public void Icono() {
-        //label.setGraphic(new ImageView(imagen));
+        label.setGraphic(new ImageView(imagen));
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
@@ -48,15 +52,15 @@ public class And implements Compuerta {
 
         //liked list
 
-
+*/
 
     public Label getLabel() {
         return label;
     }
     public Image getImage() {
-        label.setGraphic(new ImageView(imagen));
+        //label.setGraphic(new ImageView(imagen));
         return imagen;
     }
-*/
+
 
 }

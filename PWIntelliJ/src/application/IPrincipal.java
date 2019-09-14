@@ -1,4 +1,5 @@
 package application;
+import Compuertas.And;
 import InterFac.Compuerta;
 import javafx.beans.property.*;
 import javafx.event.EventHandler;
@@ -16,7 +17,7 @@ public class IPrincipal extends AnchorPane {
     Image labeImage2 = new Image(getClass().getResourceAsStream("./or.png"), 80, 120, true, true);
     private  Label label = new Label();
     public Label label2 = new Label();
-    FabCompuertas fabrica = new FabCompuertas();
+
 
     @FXML
     VBox paleta;
@@ -37,6 +38,12 @@ public class IPrincipal extends AnchorPane {
      */
 
     public void agregarImagen() {
+        FabCompuertas fabrica = new FabCompuertas();
+        Compuerta and = fabrica.getConexion("And");
+        //paleta.getChildren().add(new ImagenView(And.getImage()));
+
+
+
         label.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label);
         label2.setGraphic(new ImageView(labeImage2));
@@ -57,15 +64,12 @@ public class IPrincipal extends AnchorPane {
 
         label.setOnMousePressed(new EventHandler<MouseEvent>() {
 
-            //if para saber que compuerta se seleccionó y crear una nueva
             @Override
             public void handle(MouseEvent event) {
-                // hacer un if que obtenga una referencia  de las compuertas
-                //y que se fije en el label seleccionado
+
                 System.out.println("se ha clickeado la compuerta");
                 //label = compuerta.getLabel();
-                Compuerta and = fabrica.getConexion("And");
-                and.Icono();
+
 
             }
         });
@@ -96,18 +100,10 @@ public class IPrincipal extends AnchorPane {
              * //DEBE TENER SU RESPETIVA IMAGEN
              */
             public void handle(DragEvent event) {
-                System.out.println("SetOnDragOver-Entrada");
-                System.out.println("compuerta arrastrándose");
                 Dragboard db = event.getDragboard();
-                System.out.println(event.getDragboard());
 
-                if (event.getGestureSource() != interfaz && event.getDragboard().hasString()) { event.acceptTransferModes(TransferMode.MOVE);
-                    System.out.println(event.getSceneX());
-                    System.out.println(event.getSceneY());
-                    System.out.println("SetOnDragOver-If");
-                }else{
-                    System.out.println("SetOnDragOver-Else");
-
+                if (event.getGestureSource() != interfaz && event.getDragboard().hasString()) {
+                    event.acceptTransferModes(TransferMode.MOVE);
                 }
 
                 event.consume();
@@ -124,39 +120,33 @@ public class IPrincipal extends AnchorPane {
             public void handle(DragEvent event) {
                 System.out.println("SetOnDragExited-Entrada");
 
-                if (event.getTarget() instanceof StackPane) {
+                if ( event.getPickResult().getIntersectedNode() instanceof StackPane) {
                     System.out.println(event.getTarget());
                     System.out.println("Choque de compuertas");
-                }
-                Label source = (Label) event.getGestureSource();
-                Label toAdd = new Label();
 
-                toAdd.setGraphic(new ImageView(labeImage));
-                toAdd.setTranslateX(event.getSceneX());
-                toAdd.setTranslateY(event.getSceneY());
-                papel.getChildren().add(toAdd);
-                System.out.println("SetOnDragExited-coordenadas de to Add");
-                System.out.println(event.getSceneY());
-                System.out.println(event.getSceneX());
-                System.out.println(event.getSceneY());
-                System.out.println(event.getSceneX());
-                System.out.println(event.getSceneY());
-                System.out.println(event.getSceneX());
-                System.out.println(event.getSceneY());
-                System.out.println(event.getSceneX());
-                DoubleProperty startX = new SimpleDoubleProperty(event.getX());
-                DoubleProperty startY = new SimpleDoubleProperty(event.getY());
-                DoubleProperty endX = new SimpleDoubleProperty(event.getX());
-                DoubleProperty endY = new SimpleDoubleProperty(event.getY());
-                IPrincipal.Anchor start = new IPrincipal.Anchor(Color.PALEGREEN, startX, startY);
-                IPrincipal.Anchor end  = new IPrincipal.Anchor(Color.TOMATO, endX, endY);
-                papel.getChildren().add(start);
-                papel.getChildren().add(end);
-                Line line = new IPrincipal.BoundLine(startX, startY, endX, endY, toAdd);
-                System.out.println(event.getDragboard());
-                papel.getChildren().add(line);
-                event.consume();
-                System.out.println("SetOnDragExited-Salida");
+                    //event.getPickResult().getIntersectedNode()
+                    Label source = (Label) event.getGestureSource();
+                    Label toAdd = new Label();
+
+                    toAdd.setGraphic(new ImageView(labeImage));
+                    toAdd.setTranslateX(event.getSceneX());
+                    toAdd.setTranslateY(event.getSceneY());
+                    papel.getChildren().add(toAdd);
+                    System.out.println("SetOnDragExited-coordenadas de to Add");
+                    DoubleProperty startX = new SimpleDoubleProperty(event.getX());
+                    DoubleProperty startY = new SimpleDoubleProperty(event.getY());
+                    DoubleProperty endX = new SimpleDoubleProperty(event.getX());
+                    DoubleProperty endY = new SimpleDoubleProperty(event.getY());
+                    IPrincipal.Anchor start = new IPrincipal.Anchor(Color.PALEGREEN, startX, startY);
+                    IPrincipal.Anchor end = new IPrincipal.Anchor(Color.TOMATO, endX, endY);
+                    papel.getChildren().add(start);
+                    papel.getChildren().add(end);
+                    Line line = new IPrincipal.BoundLine(startX, startY, endX, endY, toAdd);
+                    System.out.println(event.getDragboard());
+                    papel.getChildren().add(line);
+                    event.consume();
+                    System.out.println("SetOnDragExited-Salida");
+                }
             }
         });
 
@@ -212,8 +202,11 @@ public class IPrincipal extends AnchorPane {
             setStrokeType(StrokeType.OUTSIDE);
             x.bind(centerXProperty());
             y.bind(centerYProperty());
-           //------if()
-            enableDrag();
+           if(color == color.PALEGREEN) {
+           }else{
+               enableDrag();
+
+           }
         }
 
         // make a node movable by dragging it around with the mouse.
