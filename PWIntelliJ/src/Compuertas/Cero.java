@@ -5,13 +5,14 @@ import application.IPrincipal;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 
 public class Cero implements Compuerta {
 
     public Image imagen =
             //cambiar imagen
-            new Image(getClass().getResourceAsStream("../application/And.png"));
+            new Image(getClass().getResourceAsStream("../application/Cero.png"));
     public Label label = new Label();
     public int Entradas = 0;
     public int Salida = 0;

@@ -5,12 +5,12 @@ import application.IPrincipal;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class Uno implements Compuerta {
 
     public Image imagen =
-            //cambiar imagen
-            new Image(getClass().getResourceAsStream("../application/And.png"));
+            new Image(getClass().getResourceAsStream("../application/Uno.png"));
     public Label label = new Label();
     public int Salida = 0;
 
@@ -31,7 +31,6 @@ public class Uno implements Compuerta {
 
     public Label getLabel() {
         label.setGraphic(new ImageView(imagen));
-
         return label;
     }
 

@@ -1,7 +1,9 @@
 package application;
 
 import Compuertas.And;
+import Compuertas.Cero;
 import Compuertas.Or;
+import Compuertas.Uno;
 import InterFac.Compuerta;
 
 /***
@@ -22,7 +24,11 @@ public class FabCompuertas {
             return new And();
         } else if (compuertita.equalsIgnoreCase("Or")) {
             return new Or();
-        } else {
+        } else if(compuertita.equalsIgnoreCase("Uno")){
+            return new Uno();
+        }else if(compuertita.equalsIgnoreCase("Cero")){
+            return new Cero();
+        }else {
             return null;
         }
     }

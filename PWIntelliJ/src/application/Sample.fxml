@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" minHeight="200.0" minWidth="200.0" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.IPrincipal">
+<fx:root type="javafx.scene.layout.AnchorPane" minHeight="200.0" minWidth="200.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.IPrincipal">
     <children>
-        <SplitPane dividerPositions="0.774247491638796" prefHeight="400.0" prefWidth="600.0">
+        <SplitPane dividerPositions="0.774247491638796" prefHeight="600.0" prefWidth="800.0">
             <items>
-                <AnchorPane fx:id="papel" prefHeight="200.0" prefWidth="200.0">
+                <AnchorPane fx:id="papel" prefHeight="400.0" prefWidth="400.0">
                     <children>
                         <StackPane fx:id="interfaz" layoutX="0.0" layoutY="0.0" prefHeight="398.0" prefWidth="460.0" />
                     </children>
                 </AnchorPane>
-                <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                <ScrollPane prefHeight="400.0" prefWidth="400.0">
                     <content>
                         <VBox fx:id="paleta" prefHeight="559.0" prefWidth="113.0" />
                     </content>
