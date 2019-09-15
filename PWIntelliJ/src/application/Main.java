@@ -22,7 +22,7 @@ public class Main extends Application {
         primaryStage.show();
 
         IPrincipal iPrincipal = (IPrincipal) fxmlLoader.getController();
-        iPrincipal.agregarImagen();
+        iPrincipal.Inicio();
 
     }
 

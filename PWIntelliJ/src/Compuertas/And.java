@@ -11,9 +11,7 @@ public class And implements Compuerta {
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/And.png"));
-    public Label label =new Label();
-
-
+    public Label label = new Label();
 
 
     public int Entradas = 0;
@@ -58,7 +56,8 @@ public class And implements Compuerta {
 
         return label;
     }
-    public  Image getImage() {
+
+    public Image getImage() {
         //label.setGraphic(new ImageView(imagen));
 
         return imagen;

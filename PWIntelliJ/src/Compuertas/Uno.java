@@ -6,30 +6,32 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+public class Uno implements Compuerta {
 
-public class Or implements Compuerta {
-
-    //POR ALGUNA RAZON DAN ERROR
-    private Image imagen = new Image(getClass().getResourceAsStream("../application/or.png"));
-    private Label label = new Label();
+    public Image imagen =
+            //cambiar imagen
+            new Image(getClass().getResourceAsStream("../application/And.png"));
+    public Label label = new Label();
+    public int Salida = 0;
 
 
     @Override
     public void Icono() {
-
-        label.setGraphic(new ImageView(imagen));
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
 
-        System.out.print("Se ha creado una compuerta AND");
+        System.out.print("Se ha creado una fuente de 1");
         IPrincipal devolver = new IPrincipal();
         devolver.onMousePressedProperty();
+
     }
+
 
     public Label getLabel() {
         label.setGraphic(new ImageView(imagen));
+
         return label;
     }
 
@@ -37,5 +39,5 @@ public class Or implements Compuerta {
         return imagen;
     }
 
-}
 
+}

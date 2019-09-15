@@ -7,22 +7,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Or implements Compuerta {
+public class Cero implements Compuerta {
 
-    //POR ALGUNA RAZON DAN ERROR
-    private Image imagen = new Image(getClass().getResourceAsStream("../application/or.png"));
-    private Label label = new Label();
+    public Image imagen =
+            //cambiar imagen
+            new Image(getClass().getResourceAsStream("../application/And.png"));
+    public Label label = new Label();
+    public int Entradas = 0;
+    public int Salida = 0;
 
 
     @Override
     public void Icono() {
-
-        label.setGraphic(new ImageView(imagen));
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
-
         System.out.print("Se ha creado una compuerta AND");
         IPrincipal devolver = new IPrincipal();
         devolver.onMousePressedProperty();
@@ -36,6 +36,4 @@ public class Or implements Compuerta {
     public Image getImage() {
         return imagen;
     }
-
 }
-

@@ -6,7 +6,7 @@ public class Nodo {
     //enlace de nodos
     Nodo siguiente;
 
-    public Nodo(Object valor){
+    public Nodo(Object valor) {
         this.valor = valor;
     }
 
@@ -15,10 +15,11 @@ public class Nodo {
         siguiente = n;
     }
 
-    public Nodo obtenerSiguiente(){
+    public Nodo obtenerSiguiente() {
         return siguiente;
     }
-    public Object obtenerValor(){
+
+    public Object obtenerValor() {
         return valor;
 
     }
