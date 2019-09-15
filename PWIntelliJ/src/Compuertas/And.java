@@ -9,10 +9,10 @@ import javafx.scene.image.ImageView;
 
 public class And implements Compuerta {
 
-    //POR ALGUNA RAZON DAN ERROR
-
-    public Image imagen = new Image(getClass().getResourceAsStream("../application/Compuerta.png"));
+    public Image imagen =
+            new Image(getClass().getResourceAsStream("../application/And.png"));
     public Label label =new Label();
+
 
 
 
@@ -22,7 +22,6 @@ public class And implements Compuerta {
 
     @Override
     public void Icono() {
-        label.setGraphic(new ImageView(imagen));
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
@@ -55,10 +54,13 @@ public class And implements Compuerta {
 */
 
     public Label getLabel() {
+        label.setGraphic(new ImageView(imagen));
+
         return label;
     }
-    public Image getImage() {
+    public  Image getImage() {
         //label.setGraphic(new ImageView(imagen));
+
         return imagen;
     }
 

@@ -13,10 +13,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
 public class IPrincipal extends AnchorPane {
-    Image labeImage = new Image(getClass().getResourceAsStream("./Compuerta.png"), 80, 120, true, true);
-    Image labeImage2 = new Image(getClass().getResourceAsStream("./or.png"), 80, 120, true, true);
+    public Image labeImage = new Image(getClass().getResourceAsStream("./And.png"), 80, 120, true, true);
+    private Image labeImage2 = new Image(getClass().getResourceAsStream("./or.png"), 80, 120, true, true);
     private  Label label = new Label();
-    public Label label2 = new Label();
+    private Label label2 = new Label();
 
 
     @FXML
@@ -30,8 +30,8 @@ public class IPrincipal extends AnchorPane {
 
     public IPrincipal() {
 
-
     }
+
 
     /***
      * Método que agrega la imagen a el label y lo coloca en la paleta /DEBE CAMBIARSE
@@ -40,20 +40,49 @@ public class IPrincipal extends AnchorPane {
     public void agregarImagen() {
         FabCompuertas fabrica = new FabCompuertas();
         Compuerta and = fabrica.getConexion("And");
-        //paleta.getChildren().add(new ImagenView(And.getImage()));
+        paleta.getChildren().add(and.getLabel());
+        Compuerta or = fabrica.getConexion("Or");
+        paleta.getChildren().add(or.getLabel());
 
 
+        paleta.setOnMousePressed(new EventHandler<MouseEvent>() {
+        //onMouseClickedProperty().set(new EventHandler<MouseEvent>()
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getTarget() == and.getLabel()){
+                    label = and.getLabel();
+                    labeImage = and.getImage();
+                    System.out.println("And clickeada");
+                    InitUi();
 
+                }else if(event.getTarget() == or.getLabel()){
+                    label = or.getLabel();
+                    labeImage = or.getImage();
+                    System.out.println("Or clickeada");
+                    InitUi();
+                }else{
+                    System.out.println("se ha clickeado la paleta");
+
+                }
+
+            }
+        });
+
+/*
         label.setGraphic(new ImageView(labeImage));
         paleta.getChildren().add(label);
         label2.setGraphic(new ImageView(labeImage2));
         paleta.getChildren().add(label2);
         InitUi();
+
+
+
+ */
     }
 
 
 
-    public void InitUi(){
+    private void InitUi(){
 
         /***
          * método que se encarga de pedirle a la fabrida las compuertas
@@ -62,17 +91,6 @@ public class IPrincipal extends AnchorPane {
          *
          */
 
-        label.setOnMousePressed(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-
-                System.out.println("se ha clickeado la compuerta");
-                //label = compuerta.getLabel();
-
-
-            }
-        });
         label.setOnDragDetected(new EventHandler <MouseEvent>() {
             @Override
             /***
@@ -182,9 +200,9 @@ public class IPrincipal extends AnchorPane {
             endXProperty().bind(endX);
             endYProperty().bind(endY);
             setStrokeWidth(2);
-            setStroke(Color.GRAY.deriveColor(0, 1, 1, 0.5));
+            setStroke(Color.BLUE.deriveColor(0, 1, 1, 0.5));
             setStrokeLineCap(StrokeLineCap.BUTT);
-            getStrokeDashArray().setAll(10.0, 5.0);
+            //getStrokeDashArray().setAll(10.0, 5.0);
             setMouseTransparent(true);
 
         }
@@ -195,10 +213,10 @@ public class IPrincipal extends AnchorPane {
     // a draggable anchor displayed around a point.
     class Anchor extends Circle {
         Anchor(Color color, DoubleProperty x, DoubleProperty y) {
-            super(x.get(), y.get(), 10);
-            setFill(color.deriveColor(1, 1, 1, 0.5));
+            super(x.get(), y.get(), 5);
+            setFill(color.deriveColor(1, 1, 1, 1));
             setStroke(color);
-            setStrokeWidth(2);
+            setStrokeWidth(1);
             setStrokeType(StrokeType.OUTSIDE);
             x.bind(centerXProperty());
             y.bind(centerYProperty());

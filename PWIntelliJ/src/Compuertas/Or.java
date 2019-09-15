@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 public class Or implements Compuerta {
 
     //POR ALGUNA RAZON DAN ERROR
-    private Image imagen = new Image(getClass().getResourceAsStream("../application/Compuerta.png"));
+    private Image imagen = new Image(getClass().getResourceAsStream("../application/or.png"));
     private Label label =new Label();
 
 
@@ -29,6 +29,7 @@ public class Or implements Compuerta {
     }
 
     public Label getLabel() {
+        label.setGraphic(new ImageView(imagen));
         return label;
     }
     public Image getImage() {
