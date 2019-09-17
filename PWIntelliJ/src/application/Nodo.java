@@ -1,8 +1,21 @@
 package application;
 
-import javafx.scene.Node;
-import javafx.scene.layout.Pane;
+public class Nodo {
+    private Nodo siguiente;
+    private Object dato;
 
-public class Nodo{
+    Nodo(Object dato){
+        this.dato = dato;
+        this.siguiente = null;
+    }
+    Nodo VerSig() {
+        return this.siguiente;
+    }
+    void agregar(Nodo n) {
+        this.siguiente = n;
+    }
+    Object VerDato() {
+        return this.dato;
+    }
 
 }

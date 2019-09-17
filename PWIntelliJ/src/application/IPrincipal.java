@@ -1,5 +1,4 @@
 package application;
-import Compuertas.Xor;
 import InterFac.Compuerta;
 import javafx.beans.property.*;
 import javafx.event.EventHandler;
@@ -55,18 +54,20 @@ public class IPrincipal extends AnchorPane {
         paleta.getChildren().add(uno.getLabel());
         Compuerta cero = fabrica.getConexion("Cero");
         paleta.getChildren().add(cero.getLabel());
+        Compuerta not = fabrica.getConexion("Not");
+        paleta.getChildren().add(not.getLabel());
         Compuerta and = fabrica.getConexion("And");
         paleta.getChildren().add(and.getLabel());
+        Compuerta nand = fabrica.getConexion("Nand");
+        paleta.getChildren().add(nand.getLabel());
         Compuerta or = fabrica.getConexion("Or");
         paleta.getChildren().add(or.getLabel());
+        Compuerta nor = fabrica.getConexion("Nor");
+        paleta.getChildren().add(nor.getLabel());
         Compuerta xor = fabrica.getConexion("Xor");
         paleta.getChildren().add(xor.getLabel());
         Compuerta xnor = fabrica.getConexion("Xnor");
         paleta.getChildren().add(xnor.getLabel());
-        Compuerta nor = fabrica.getConexion("Nor");
-        paleta.getChildren().add(nor.getLabel());
-        Compuerta not = fabrica.getConexion("Not");
-        paleta.getChildren().add(not.getLabel());
         Compuerta usuario = fabrica.getConexion("Usuario");
         paleta.getChildren().add(usuario.getLabel());
 
@@ -85,6 +86,11 @@ public class IPrincipal extends AnchorPane {
                     labeImage = or.getImage();
                     System.out.println("Or clickeada");
                     InicioInterfaz();
+                } else if (event.getTarget() == nor.getLabel()) {
+                    label = nor.getLabel();
+                    labeImage = nor.getImage();
+                    System.out.println("nor clickeada");
+                    InicioInterfaz();
                 } else if (event.getTarget() == xor.getLabel()) {
                     label = xor.getLabel();
                     labeImage = xor.getImage();
@@ -93,32 +99,32 @@ public class IPrincipal extends AnchorPane {
                 } else if (event.getTarget() == xnor.getLabel()) {
                     label = xnor.getLabel();
                     labeImage = xnor.getImage();
-                    System.out.println("Or clickeada");
-                    InicioInterfaz();
-                } else if (event.getTarget() == nor.getLabel()) {
-                    label = nor.getLabel();
-                    labeImage = nor.getImage();
-                    System.out.println("Or clickeada");
+                    System.out.println("xnor clickeada");
                     InicioInterfaz();
                 } else if (event.getTarget() == uno.getLabel()) {
                     label = uno.getLabel();
                     labeImage = uno.getImage();
-                    System.out.println("Or clickeada");
+                    System.out.println(" uno clickeada");
                     InicioInterfaz();
                 } else if (event.getTarget() == cero.getLabel()) {
                     label = cero.getLabel();
                     labeImage = cero.getImage();
-                    System.out.println("Or clickeada");
+                    System.out.println("cero clickeada");
                     InicioInterfaz();
                 } else if (event.getTarget() == not.getLabel()) {
                     label = not.getLabel();
                     labeImage = not.getImage();
-                    System.out.println("Or clickeada");
+                    System.out.println("not clickeada");
                     InicioInterfaz();
                 } else if (event.getTarget() == usuario.getLabel()) {
                     label = usuario.getLabel();
                     labeImage = usuario.getImage();
-                    System.out.println("Or clickeada");
+                    System.out.println("usuario clickeada");
+                    InicioInterfaz();
+                }else if (event.getTarget() == nand.getLabel()) {
+                    label = nand.getLabel();
+                    labeImage = nand.getImage();
+                    System.out.println("nand clickeada");
                     InicioInterfaz();
 
 
@@ -303,18 +309,6 @@ public class IPrincipal extends AnchorPane {
                 System.out.println(label.getId());
             }
         });
-
-/*
-        label.setOnDragDone(new EventHandler<DragEvent>() {
-            @Override
-
-            public void handle(DragEvent event) {
-                event.consume();
-            }
-        });
-
-*/
-
     }
 
 
@@ -407,18 +401,10 @@ public class IPrincipal extends AnchorPane {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
 
-
                         if (!mouseEvent.isPrimaryButtonDown()) {
                             getScene().setCursor(Cursor.DEFAULT);
 
                         }
-                    }
-                });
-                setOnMouseReleased(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        System.out.println(mouseEvent.getSource());
-                        System.out.println(mouseEvent.getTarget());
                     }
                 });
 

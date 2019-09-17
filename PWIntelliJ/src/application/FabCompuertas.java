@@ -28,7 +28,9 @@ public class FabCompuertas {
             return new Cero();
         } else if (compuertita.equalsIgnoreCase("And")) {
             return new And();
-        } else if (compuertita.equalsIgnoreCase("Or")) {
+        } else if (compuertita.equalsIgnoreCase("Nand")) {
+            return new Nand();
+        }else if (compuertita.equalsIgnoreCase("Or")) {
             return new Or();
         } else if (compuertita.equalsIgnoreCase("Not")) {
             return new Not();
