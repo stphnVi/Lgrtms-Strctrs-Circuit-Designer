@@ -12,6 +12,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
+import java.util.Random;
+
 
 public class IPrincipal extends AnchorPane {
     /***
@@ -317,13 +319,21 @@ public class IPrincipal extends AnchorPane {
 
 
     class BoundLine extends Line {
+        Random r = new Random();
+        Random g = new Random();
+        Random b = new Random();
             BoundLine(DoubleProperty startX, DoubleProperty startY, DoubleProperty endX, DoubleProperty endY, Label toAdd) {
                 startXProperty().bind(startX);
                 startYProperty().bind(startY);
                 endXProperty().bind(endX);
                 endYProperty().bind(endY);
                 setStrokeWidth(2);
-                setStroke(Color.BLUE.deriveColor(0, 1, 1, 0.5));
+                int R = r.nextInt(255)+1;
+                int G = g.nextInt(255)+1;
+                int B = b.nextInt(255)+1;
+                setStroke(Color.rgb(R,G,B));
+
+                //setStroke(Color.rgb(50,45,75));
                 setStrokeLineCap(StrokeLineCap.BUTT);
                 setMouseTransparent(true);
 
