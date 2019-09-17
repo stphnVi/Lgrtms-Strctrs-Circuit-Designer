@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" minHeight="200.0" minWidth="200.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.IPrincipal">
+<fx:root minHeight="200.0" minWidth="200.0" prefHeight="563.0" prefWidth="861.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IPrincipal">
     <children>
-        <SplitPane dividerPositions="0.774247491638796" prefHeight="600.0" prefWidth="800.0">
+        <SplitPane dividerPositions="0.5" prefHeight="563.0" prefWidth="861.0">
             <items>
-                <AnchorPane fx:id="papel" prefHeight="400.0" prefWidth="400.0">
-                    <children>
-                        <StackPane fx:id="interfaz" layoutX="0.0" layoutY="0.0" prefHeight="398.0" prefWidth="460.0" />
-                    </children>
+                <AnchorPane fx:id="papel" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: White;">
+               <children>
+                        <StackPane fx:id="interfaz" prefHeight="561.0" prefWidth="694.0" />
+               </children>
                 </AnchorPane>
-                <ScrollPane prefHeight="400.0" prefWidth="400.0">
-                    <content>
-                        <VBox fx:id="paleta" prefHeight="559.0" prefWidth="113.0" />
-                    </content>
-                </ScrollPane>
+            <SplitPane dividerPositions="0.14260249554367202" orientation="VERTICAL" prefHeight="561.0" prefWidth="71.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="159.0">
+                     <children>
+                        <Button contentDisplay="CENTER" layoutX="49.0" layoutY="18.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="62.0" text="Operar" textAlignment="JUSTIFY" />
+                     </children>
+                  </AnchorPane>
+                      <ScrollPane prefHeight="498.0" prefWidth="159.0">
+                          <content>
+                              <VBox fx:id="paleta" prefHeight="559.0" prefWidth="151.0" style="-fx-background-color: White;" />
+                          </content>
+                      </ScrollPane>
+              </items>
+            </SplitPane>
             </items>
         </SplitPane>
     </children>

@@ -53,6 +53,7 @@ public class And implements Compuerta {
 
     public Label getLabel() {
         label.setGraphic(new ImageView(imagen));
+        label.setId("And");
 
         return label;
     }

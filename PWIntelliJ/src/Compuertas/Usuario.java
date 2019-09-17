@@ -7,10 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Cero implements Compuerta {
+public class Usuario implements Compuerta {
 
     public Image imagen =
-            new Image(getClass().getResourceAsStream("../application/Cero.png"));
+            new Image(getClass().getResourceAsStream("../application/And.png"));
     public Label label = new Label();
 
 
@@ -44,6 +44,6 @@ public class Cero implements Compuerta {
 
         return imagen;
     }
-}
 
+}
 

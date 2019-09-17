@@ -7,10 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Cero implements Compuerta {
+public class Xor implements Compuerta {
 
     public Image imagen =
-            new Image(getClass().getResourceAsStream("../application/Cero.png"));
+            new Image(getClass().getResourceAsStream("../application/Xor.png"));
     public Label label = new Label();
 
 
@@ -30,7 +30,26 @@ public class Cero implements Compuerta {
         devolver.onMousePressedProperty();
 
     }
+/*
+    public void Operacion(int in , int out){
 
+        Nodo ent1 = new Nodo(1);
+        Nodo ent2 = new Nodo(0);
+        if(ent1==1 && ent2 ==1){
+            int n = 1;
+            Nodo salida = new Nodo(n);
+            return salida;
+        }else{
+            int n = 0;
+            Nodo salida= new Nodo(n);
+            return salida;
+
+
+        }
+
+        //liked list
+
+*/
 
     public Label getLabel() {
         label.setGraphic(new ImageView(imagen));
@@ -44,6 +63,6 @@ public class Cero implements Compuerta {
 
         return imagen;
     }
+
+
 }
-
-

@@ -1,10 +1,9 @@
 package application;
 
-import Compuertas.And;
-import Compuertas.Cero;
-import Compuertas.Or;
-import Compuertas.Uno;
+import Compuertas.*;
 import InterFac.Compuerta;
+
+import java.awt.*;
 
 /***
  *
@@ -12,6 +11,8 @@ import InterFac.Compuerta;
  */
 
 public class FabCompuertas {
+
+
     /***
      *
      *
@@ -20,15 +21,26 @@ public class FabCompuertas {
      * retorna a las compuertas respectivas por hacer.
      */
     public Compuerta getConexion(String compuertita) {
-        if (compuertita.equalsIgnoreCase("And")) {
+
+        if (compuertita.equalsIgnoreCase("Uno")) {
+            return new Uno();
+        } else if (compuertita.equalsIgnoreCase("Cero")) {
+            return new Cero();
+        } else if (compuertita.equalsIgnoreCase("And")) {
             return new And();
         } else if (compuertita.equalsIgnoreCase("Or")) {
             return new Or();
-        } else if(compuertita.equalsIgnoreCase("Uno")){
-            return new Uno();
-        }else if(compuertita.equalsIgnoreCase("Cero")){
-            return new Cero();
-        }else {
+        } else if (compuertita.equalsIgnoreCase("Not")) {
+            return new Not();
+        } else if (compuertita.equalsIgnoreCase("Xor")) {
+            return new Xor();
+        } else if (compuertita.equalsIgnoreCase("Xnor")) {
+            return new Xnor();
+        } else if (compuertita.equalsIgnoreCase("Nor")) {
+            return new Nor();
+        } else if (compuertita.equalsIgnoreCase("Usuario")) {
+            return new Or();
+        } else {
             return null;
         }
     }

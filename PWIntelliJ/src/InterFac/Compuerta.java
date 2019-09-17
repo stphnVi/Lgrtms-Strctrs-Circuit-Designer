@@ -13,4 +13,5 @@ public interface Compuerta {
 
     Image getImage();
 
+
 }
