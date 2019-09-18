@@ -291,10 +291,10 @@ public class IPrincipal extends AnchorPane {
                         PDline.setId("Pat2");
                         papel.getChildren().add(PDline);
                         //-------------------------------------------------------------------------
-                        DoubleProperty PFstartX = new SimpleDoubleProperty(event.getX() + 10);
-                        DoubleProperty PFstartY = new SimpleDoubleProperty(event.getY() + 75);
-                        DoubleProperty PFendX = new SimpleDoubleProperty(event.getX() + 10);
-                        DoubleProperty PFendY = new SimpleDoubleProperty(event.getY() + 75);
+                        DoubleProperty PFstartX = new SimpleDoubleProperty(event.getX() + 145);
+                        DoubleProperty PFstartY = new SimpleDoubleProperty(event.getY() + 37);
+                        DoubleProperty PFendX = new SimpleDoubleProperty(event.getX() + 145);
+                        DoubleProperty PFendY = new SimpleDoubleProperty(event.getY() + 37);
                         IPrincipal.Anchor PFstart = new IPrincipal.Anchor(Color.BLUEVIOLET, PFstartX, PFstartY,toAdd);
                         IPrincipal.Anchor PFend = new IPrincipal.Anchor(Color.AQUAMARINE, PFendX, PFendY,toAdd);
 
