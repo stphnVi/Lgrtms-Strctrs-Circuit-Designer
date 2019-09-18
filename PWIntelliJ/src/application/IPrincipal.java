@@ -391,8 +391,8 @@ public class IPrincipal extends AnchorPane {
                     //mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
                     Anchor circulo = (Anchor)mouseEvent.getPickResult().getIntersectedNode();
 
-                    //Compuerta compuerta = circulo.micompuerta;
-                    //compuerta.toString();
+                    Compuerta compuerta = circulo.micompuerta;
+                    compuerta.toString();
                     /*
                     if (mouseEvent.getPickResult().getIntersectedNode() instanceof Circle) {
                         System.out.println(mouseEvent.getPickResult().getIntersectedNode());
@@ -410,9 +410,11 @@ public class IPrincipal extends AnchorPane {
                 public void handle(MouseEvent mouseEvent) {
                     double newX = mouseEvent.getX() + dragDelta.x;
                     if (mouseEvent.getPickResult().getIntersectedNode() instanceof Circle) {
+                        mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
                         System.out.println("noddrrrr");
 
                     } else {
+                        mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
 
                         if (newX > 0 && newX < getScene().getWidth()) {
                             setCenterX(newX);
