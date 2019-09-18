@@ -294,7 +294,7 @@ public class IPrincipal extends AnchorPane {
                         DoubleProperty PFstartX = new SimpleDoubleProperty(event.getX() + 145);
                         DoubleProperty PFstartY = new SimpleDoubleProperty(event.getY() + 37);
                         DoubleProperty PFendX = new SimpleDoubleProperty(event.getX() + 145);
-                        DoubleProperty PFendY = new SimpleDoubleProperty(event.getY() + 37+++++++++++++++++++++++++++);
+                        DoubleProperty PFendY = new SimpleDoubleProperty(event.getY() + 37);
                         IPrincipal.Anchor PFstart = new IPrincipal.Anchor(Color.BLUEVIOLET, PFstartX, PFstartY,toAdd);
                         IPrincipal.Anchor PFend = new IPrincipal.Anchor(Color.AQUAMARINE, PFendX, PFendY,toAdd);
 
