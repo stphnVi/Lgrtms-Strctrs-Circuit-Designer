@@ -7,17 +7,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Uno implements Compuerta {
+public class Uno extends Compuerta {
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Uno.png"));
-    public Label label = new Label();
-
 
     public int Entradas = 0;
     public int Salida = 0;
 
-
+    public Uno(){
+        this.setGraphic(new ImageView(imagen));
+    }
     @Override
     public void Icono() {
         /***
@@ -51,12 +51,6 @@ public class Uno implements Compuerta {
 
 */
 
-    public Label getLabel() {
-        label.setGraphic(new ImageView(imagen));
-        label.setId("And");
-
-        return label;
-    }
 
     public Image getImage() {
         //label.setGraphic(new ImageView(imagen));

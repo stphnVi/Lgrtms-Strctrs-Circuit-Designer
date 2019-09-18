@@ -24,6 +24,8 @@ public class Main extends Application {
         IPrincipal iPrincipal = (IPrincipal) fxmlLoader.getController();
         iPrincipal.Inicio();
 
+
+
     }
 
     public static void main(String[] args) {

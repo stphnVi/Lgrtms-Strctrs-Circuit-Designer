@@ -3,15 +3,14 @@ package InterFac;
 import javafx.scene.image.Image;
 
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 
-public interface Compuerta {
+public abstract class Compuerta extends Label {
 
-    void Icono();
+    public abstract void Icono();
 
-    Label getLabel();
-
-    Image getImage();
+    public abstract Image getImage();
 
 
 }

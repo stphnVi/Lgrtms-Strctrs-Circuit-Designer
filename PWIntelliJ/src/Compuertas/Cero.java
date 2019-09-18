@@ -7,15 +7,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Cero implements Compuerta {
+public class Cero extends Compuerta {
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Cero.png"));
-    public Label label = new Label();
+   // public Label label = new Label();
 
 
     public int Entradas = 0;
     public int Salida = 0;
+
+    public Cero(){
+        this.setGraphic(new ImageView(imagen));
+    }
 
 
     @Override
@@ -31,13 +35,6 @@ public class Cero implements Compuerta {
 
     }
 
-
-    public Label getLabel() {
-        label.setGraphic(new ImageView(imagen));
-        label.setId("And");
-
-        return label;
-    }
 
     public Image getImage() {
         //label.setGraphic(new ImageView(imagen));

@@ -51,84 +51,89 @@ public class IPrincipal extends AnchorPane {
          */
         FabCompuertas fabrica = new FabCompuertas();
         Compuerta uno = fabrica.getConexion("Uno");
-        paleta.getChildren().add(uno.getLabel());
+        paleta.getChildren().add(uno);
         Compuerta cero = fabrica.getConexion("Cero");
-        paleta.getChildren().add(cero.getLabel());
+        paleta.getChildren().add(cero);
         Compuerta not = fabrica.getConexion("Not");
-        paleta.getChildren().add(not.getLabel());
+        paleta.getChildren().add(not);
         Compuerta and = fabrica.getConexion("And");
-        paleta.getChildren().add(and.getLabel());
+        paleta.getChildren().add(and);
         Compuerta nand = fabrica.getConexion("Nand");
-        paleta.getChildren().add(nand.getLabel());
+        paleta.getChildren().add(nand);
         Compuerta or = fabrica.getConexion("Or");
-        paleta.getChildren().add(or.getLabel());
+        paleta.getChildren().add(or);
         Compuerta nor = fabrica.getConexion("Nor");
-        paleta.getChildren().add(nor.getLabel());
+        paleta.getChildren().add(nor);
         Compuerta xor = fabrica.getConexion("Xor");
-        paleta.getChildren().add(xor.getLabel());
+        paleta.getChildren().add(xor);
         Compuerta xnor = fabrica.getConexion("Xnor");
-        paleta.getChildren().add(xnor.getLabel());
+        paleta.getChildren().add(xnor);
         Compuerta usuario = fabrica.getConexion("Usuario");
-        paleta.getChildren().add(usuario.getLabel());
+        paleta.getChildren().add(usuario);
 
 
 
         paleta.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (event.getTarget() == and.getLabel()) {
-                    label = and.getLabel();
+                if (event.getTarget() == and) {
+                    label = and;
                     labeImage = and.getImage();
-                    System.out.println("And clickeada");
+                    Id= null;
                     InicioInterfaz();
-                } else if (event.getTarget() == or.getLabel()) {
-                    label = or.getLabel();
+                } else if (event.getTarget() == or) {
+                    label = or;
                     labeImage = or.getImage();
-                    System.out.println("Or clickeada");
+                    Id= null;
                     InicioInterfaz();
-                } else if (event.getTarget() == nor.getLabel()) {
-                    label = nor.getLabel();
+                } else if (event.getTarget() == nor) {
+                    label = nor;
                     labeImage = nor.getImage();
-                    System.out.println("nor clickeada");
+                    Id= null;
                     InicioInterfaz();
-                } else if (event.getTarget() == xor.getLabel()) {
-                    label = xor.getLabel();
+                } else if (event.getTarget() == xor) {
+                    label = xor;
                     labeImage = xor.getImage();
-                    System.out.println("Xor clickeada");
+                    Id= null;
                     InicioInterfaz();
-                } else if (event.getTarget() == xnor.getLabel()) {
-                    label = xnor.getLabel();
+                } else if (event.getTarget() == xnor) {
+                    label = xnor;
                     labeImage = xnor.getImage();
-                    System.out.println("xnor clickeada");
+                    Id= null;
                     InicioInterfaz();
-                } else if (event.getTarget() == uno.getLabel()) {
-                    label = uno.getLabel();
+                } else if (event.getTarget() == uno) {
+                    label = uno;
                     labeImage = uno.getImage();
-                    System.out.println(" uno clickeada");
+                    label.setId("Uno");
+                    Id="Uno";
                     InicioInterfaz();
-                } else if (event.getTarget() == cero.getLabel()) {
-                    label = cero.getLabel();
+                } else if (event.getTarget() == cero) {
+                    label = cero;
                     labeImage = cero.getImage();
-                    System.out.println("cero clickeada");
+                    label.setId("Cero");
+                    Id="Cero";
+                   // System.out.println("cero clickeada");
                     InicioInterfaz();
-                } else if (event.getTarget() == not.getLabel()) {
-                    label = not.getLabel();
+                } else if (event.getTarget() == not) {
+                    label = not;
                     labeImage = not.getImage();
-                    System.out.println("not clickeada");
+                    Id= null;
+                    //System.out.println("not clickeada");
                     InicioInterfaz();
-                } else if (event.getTarget() == usuario.getLabel()) {
-                    label = usuario.getLabel();
+                } else if (event.getTarget() == usuario) {
+                    label = usuario;
                     labeImage = usuario.getImage();
-                    System.out.println("usuario clickeada");
+                    Id= null;
+                    //System.out.println("usuario clickeada");
                     InicioInterfaz();
-                }else if (event.getTarget() == nand.getLabel()) {
-                    label = nand.getLabel();
+                }else if (event.getTarget() == nand) {
+                    label = nand;
                     labeImage = nand.getImage();
-                    System.out.println("nand clickeada");
+                    Id= null;
+                    //System.out.println("nand clickeada");
                     InicioInterfaz();
-
-
                 } else {
+                    Id= null;
                     System.out.println("se ha clickeado la paleta");
                 }
             }
@@ -142,8 +147,8 @@ public class IPrincipal extends AnchorPane {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println(event.getPickResult().getIntersectedNode());
-                System.out.println(event.getSource());
-                System.out.println(label.getId());
+                //System.out.println(event.getSource());
+                //System.out.println(label.getId());
             }
         });
         /***
@@ -201,10 +206,14 @@ public class IPrincipal extends AnchorPane {
                  */
                 if (event.getPickResult().getIntersectedNode() instanceof StackPane) {
                     //Label source = (Label) event.getGestureSource();
-                    Label toAdd = new Label();
-                    toAdd.setGraphic(new ImageView(labeImage));
+                    //Compuerta toAdd = new Compuerta();
+                    FabCompuertas fabrica = new FabCompuertas();
+                    Compuerta toAdd = fabrica.getConexion(label.getId());
+                    //toAdd.setGraphic(new ImageView(labeImage));
+
                     toAdd.setTranslateX(event.getSceneX());
                     toAdd.setTranslateY(event.getSceneY());
+                    toAdd.setId(label.getId());
                     papel.getChildren().add(toAdd);
                     /***
                      *
@@ -215,8 +224,8 @@ public class IPrincipal extends AnchorPane {
                         DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY()+25);
                         DoubleProperty PUendX = new SimpleDoubleProperty(event.getX()+10);
                         DoubleProperty PUendY = new SimpleDoubleProperty(event.getY()+25);
-                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY);
-                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY);
+                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY, toAdd);
+                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY,toAdd);
                         papel.getChildren().add(PUstart);
                         papel.getChildren().add(PUend);
 
@@ -233,8 +242,8 @@ public class IPrincipal extends AnchorPane {
                         DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY()+25);
                         DoubleProperty PUendX = new SimpleDoubleProperty(event.getX()+10);
                         DoubleProperty PUendY = new SimpleDoubleProperty(event.getY()+25);
-                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY);
-                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY);
+                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY,toAdd);
+                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY,toAdd);
                         papel.getChildren().add(PUstart);
                         papel.getChildren().add(PUend);
 
@@ -252,8 +261,8 @@ public class IPrincipal extends AnchorPane {
                         DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY() + 25);
                         DoubleProperty PUendX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PUendY = new SimpleDoubleProperty(event.getY() + 25);
-                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY);
-                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY);
+                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY,toAdd);
+                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY,toAdd);
                         PUend.setId("EntradaR");
                         PUstart.setId("EntradaS");
                         papel.getChildren().add(PUstart);
@@ -267,8 +276,8 @@ public class IPrincipal extends AnchorPane {
                         DoubleProperty PDstartY = new SimpleDoubleProperty(event.getY() + 50);
                         DoubleProperty PDendX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PDendY = new SimpleDoubleProperty(event.getY() + 50);
-                        IPrincipal.Anchor PDstart = new IPrincipal.Anchor(Color.BLACK, PDstartX, PDstartY);
-                        IPrincipal.Anchor PDend = new IPrincipal.Anchor(Color.AQUAMARINE, PDendX, PDendY);
+                        IPrincipal.Anchor PDstart = new IPrincipal.Anchor(Color.BLACK, PDstartX, PDstartY, toAdd);
+                        IPrincipal.Anchor PDend = new IPrincipal.Anchor(Color.AQUAMARINE, PDendX, PDendY, toAdd);
                         PDend.setId("EntradaR");
                         PDstart.setId("EntradaS");
 
@@ -283,8 +292,8 @@ public class IPrincipal extends AnchorPane {
                         DoubleProperty PFstartY = new SimpleDoubleProperty(event.getY() + 75);
                         DoubleProperty PFendX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PFendY = new SimpleDoubleProperty(event.getY() + 75);
-                        IPrincipal.Anchor PFstart = new IPrincipal.Anchor(Color.BLUEVIOLET, PFstartX, PFstartY);
-                        IPrincipal.Anchor PFend = new IPrincipal.Anchor(Color.AQUAMARINE, PFendX, PFendY);
+                        IPrincipal.Anchor PFstart = new IPrincipal.Anchor(Color.BLUEVIOLET, PFstartX, PFstartY,toAdd);
+                        IPrincipal.Anchor PFend = new IPrincipal.Anchor(Color.AQUAMARINE, PFendX, PFendY,toAdd);
 
                         PFend.setId("salidaR");
                         PFstart.setId("salidaS");
@@ -316,104 +325,125 @@ public class IPrincipal extends AnchorPane {
         Random r = new Random();
         Random g = new Random();
         Random b = new Random();
-            BoundLine(DoubleProperty startX, DoubleProperty startY, DoubleProperty endX, DoubleProperty endY, Label toAdd) {
-                startXProperty().bind(startX);
-                startYProperty().bind(startY);
-                endXProperty().bind(endX);
-                endYProperty().bind(endY);
-                setStrokeWidth(2);
-                int R = r.nextInt(255)+1;
-                int G = g.nextInt(255)+1;
-                int B = b.nextInt(255)+1;
-                setStroke(Color.rgb(R,G,B));
+        BoundLine(DoubleProperty startX, DoubleProperty startY, DoubleProperty endX, DoubleProperty endY, Label toAdd ) {
+            startXProperty().bind(startX);
+            startYProperty().bind(startY);
+            endXProperty().bind(endX);
+            endYProperty().bind(endY);
+            setStrokeWidth(2);
+            int R = r.nextInt(255)+1;
+            int G = g.nextInt(255)+1;
+            int B = b.nextInt(255)+1;
+            setStroke(Color.rgb(R,G,B));
 
-                //setStroke(Color.rgb(50,45,75));
-                setStrokeLineCap(StrokeLineCap.BUTT);
-                setMouseTransparent(true);
-
-            }
-
+            //setStroke(Color.rgb(50,45,75));
+            setStrokeLineCap(StrokeLineCap.BUTT);
+            setMouseTransparent(true);
 
         }
 
-        // a draggable anchor displayed around a point.
-        class Anchor extends Circle {
-            Anchor(Color color, DoubleProperty x, DoubleProperty y) {
-                super(x.get(), y.get(), 10);
-                setFill(color.deriveColor(1, 1, 1, 1));
-                setStroke(color);
-                setStrokeWidth(1);
-                setStrokeType(StrokeType.OUTSIDE);
-                x.bind(centerXProperty());
-                y.bind(centerYProperty());
-
-                if (color == color.BLACK) {
-                    System.out.println(label.getId());
-
-
-                } else {
-                    System.out.println(label.getId());
-                    enableDrag();
-
-                }
-            }
-
-            // make a node movable by dragging it around with the mouse.
-            private void enableDrag() {
-                final IPrincipal.Anchor.Delta dragDelta = new IPrincipal.Anchor.Delta();
-                setOnMousePressed(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        // record a delta distance for the drag and drop operation.
-                        dragDelta.x = getCenterX() - mouseEvent.getX();
-                        dragDelta.y = getCenterY() - mouseEvent.getY();
-                        getScene().setCursor(Cursor.MOVE);
-                    }
-                });
-                setOnMouseReleased(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        getScene().setCursor(Cursor.HAND);
-                    }
-                });
-                setOnMouseDragged(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        double newX = mouseEvent.getX() + dragDelta.x;
-                        if (newX > 0 && newX < getScene().getWidth()) {
-                            setCenterX(newX);
-                        }
-                        double newY = mouseEvent.getY() + dragDelta.y;
-                        if (newY > 0 && newY < getScene().getHeight()) {
-                            setCenterY(newY);
-                        }
-                    }
-                });
-                setOnMouseEntered(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        if (!mouseEvent.isPrimaryButtonDown()) {
-                            getScene().setCursor(Cursor.HAND);
-                        }
-                    }
-                });
-                setOnMouseExited(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-
-                        if (!mouseEvent.isPrimaryButtonDown()) {
-                            getScene().setCursor(Cursor.DEFAULT);
-
-                        }
-                    }
-                });
-
-            }
-            private class Delta {
-                double x, y;
-            }
-        }
 
     }
+
+    // a draggable anchor displayed around a point.
+    class Anchor extends Circle {
+
+        Compuerta micompuerta;
+
+        Anchor(Color color, DoubleProperty x, DoubleProperty y, Compuerta micompuerta) {
+            super(x.get(), y.get(), 10);
+            setFill(color.deriveColor(1, 1, 1, 1));
+            setStroke(color);
+            setStrokeWidth(1);
+            setStrokeType(StrokeType.OUTSIDE);
+            x.bind(centerXProperty());
+            y.bind(centerYProperty());
+            this.micompuerta = micompuerta;
+
+            if (color == color.BLACK) {
+
+            } else {
+                enableDrag(micompuerta);
+
+            }
+        }
+
+        // make a node movable by dragging it around with the mouse.
+        private void enableDrag(Label toAdd) {
+            final IPrincipal.Anchor.Delta dragDelta = new IPrincipal.Anchor.Delta();
+            setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    // record a delta distance for the drag and drop operation.
+                    dragDelta.x = getCenterX() - mouseEvent.getX();
+                    dragDelta.y = getCenterY() - mouseEvent.getY();
+                    getScene().setCursor(Cursor.MOVE);
+                }
+            });
+            setOnMouseReleased(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    getScene().setCursor(Cursor.HAND);
+                    mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
+                    Anchor circulo = (Anchor)mouseEvent.getPickResult().getIntersectedNode();
+
+                    Compuerta compuerta = circulo.micompuerta;
+                    compuerta.toString();
+                    System.out.println(label.getId()+ "released");
+                }
+            });
+            setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    double newX = mouseEvent.getX() + dragDelta.x;
+                    if (newX > 0 && newX < getScene().getWidth()) {
+                        setCenterX(newX);
+                        System.out.println(toAdd.getId() +"Dragged");
+                    }
+                    double newY = mouseEvent.getY() + dragDelta.y;
+                    if (newY > 0 && newY < getScene().getHeight()) {
+                        setCenterY(newY);
+                        System.out.println(label.getId()+"Dragged");
+                    }
+                }
+            });
+            interfaz.setOnMouseDragReleased(new EventHandler<MouseDragEvent>() {
+                @Override
+                public void handle(MouseDragEvent event) {
+                    System.out.println("ai");
+                }
+            });
+            setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    if (!mouseEvent.isPrimaryButtonDown()) {
+                        getScene().setCursor(Cursor.HAND);
+                        System.out.println(label.getId()+"Entered");
+                    }
+                }
+            });
+            setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+
+
+                    if (!mouseEvent.isPrimaryButtonDown()) {
+                        getScene().setCursor(Cursor.DEFAULT);
+                        System.out.println(micompuerta.getId()+"Exited");
+
+                    }
+                }
+            });
+
+        }
+        private class Delta {
+            double x, y;
+        }
+    }
+
+}
+
+
 
 

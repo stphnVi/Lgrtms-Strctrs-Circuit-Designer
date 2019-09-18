@@ -1,9 +1,6 @@
 package application;
-
 import Compuertas.*;
 import InterFac.Compuerta;
-
-import java.awt.*;
 
 /***
  *
@@ -11,8 +8,6 @@ import java.awt.*;
  */
 
 public class FabCompuertas {
-
-
     /***
      *
      *

@@ -7,15 +7,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Not implements Compuerta {
+public class Not extends Compuerta {
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Not.png"));
-    public Label label = new Label();
+
 
 
     public int Entradas = 0;
     public int Salida = 0;
+
+    public Not(){
+        this.setGraphic(new ImageView(imagen));
+        this.setId("Not");
+
+    }
 
 
     @Override
@@ -50,13 +56,6 @@ public class Not implements Compuerta {
         //liked list
 
 */
-
-    public Label getLabel() {
-        label.setGraphic(new ImageView(imagen));
-        label.setId("And");
-
-        return label;
-    }
 
     public Image getImage() {
         //label.setGraphic(new ImageView(imagen));

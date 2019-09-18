@@ -7,17 +7,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Or implements Compuerta {
+public class Or extends Compuerta {
 
     //POR ALGUNA RAZON DAN ERROR
     private Image imagen = new Image(getClass().getResourceAsStream("../application/or.png"));
-    private Label label = new Label();
+
+    public Or(){
+        this.setGraphic(new ImageView(imagen));
+        this.setId("Or");
+
+    }
 
 
     @Override
     public void Icono() {
-
-        label.setGraphic(new ImageView(imagen));
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
@@ -28,10 +31,6 @@ public class Or implements Compuerta {
         devolver.onMousePressedProperty();
     }
 
-    public Label getLabel() {
-        label.setGraphic(new ImageView(imagen));
-        return label;
-    }
 
     public Image getImage() {
         return imagen;

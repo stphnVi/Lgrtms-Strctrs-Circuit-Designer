@@ -7,16 +7,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Nand implements Compuerta {
+public class Nand extends Compuerta {
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Nand.png"));
-    public Label label = new Label();
+
 
 
     public int Entradas = 0;
     public int Salida = 0;
 
+
+    public Nand(){
+        this.setGraphic(new ImageView(imagen));
+        this.setId("Nand");
+
+    }
 
     @Override
     public void Icono() {
@@ -50,13 +56,6 @@ public class Nand implements Compuerta {
         //liked list
 
 */
-
-    public Label getLabel() {
-        label.setGraphic(new ImageView(imagen));
-        label.setId("And");
-
-        return label;
-    }
 
     public Image getImage() {
         //label.setGraphic(new ImageView(imagen));
