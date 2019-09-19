@@ -396,8 +396,6 @@ public class IPrincipal extends AnchorPane {
             }
         }
 
-
-        // make a node movable by dragging it around with the mouse.
         private void enableDrag(Label toAdd) {
 
             final IPrincipal.Anchor.Delta dragDelta = new IPrincipal.Anchor.Delta();
@@ -417,25 +415,19 @@ public class IPrincipal extends AnchorPane {
                 public void handle(MouseEvent mouseEvent) {
                     double newX = mouseEvent.getX() + dragDelta.x;
 
-                    if (mouseEvent.getPickResult().getIntersectedNode() instanceof Circle) {
-                        mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
-                        System.out.println("noddrrrr");
-
-                    }else{
                         if (newX > 0 && newX < getScene().getWidth()) {
                             setCenterX(newX);
                             System.out.println(mouseEvent.getPickResult().getIntersectedNode() + "Dragged");
-                            //mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
+
                         }
                         double newY = mouseEvent.getY() + dragDelta.y;
                         if (newY > 0 && newY < getScene().getHeight()) {
                             setCenterY(newY);
                             System.out.println(mouseEvent.getPickResult().getIntersectedNode() + "Dragged");
-                            //mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
                         }
                     }
 
-                }
+
 
             });
 
@@ -451,21 +443,27 @@ public class IPrincipal extends AnchorPane {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
 
+                        if (!mouseEvent.isPrimaryButtonDown()) {
+                            getScene().setCursor(Cursor.DEFAULT);
 
-                    if (!mouseEvent.isPrimaryButtonDown()) {
-                        getScene().setCursor(Cursor.DEFAULT);
+                            if (mouseEvent.getPickResult().getIntersectedNode() instanceof Circle) {
+                                mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
+                                System.out.println("noddrrrr");
 
+                        }
                     }
                 }
             });
             setOnMouseReleased(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+
                     System.out.println("terminó");
                     System.out.println("terminó");
                     System.out.println("terminó");
                     System.out.println("terminó");
                     System.out.println("terminó");
+                    System.out.println(mouseEvent.getPickResult().getIntersectedNode() instanceof Circle);
                     mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
                     getScene().setCursor(Cursor.HAND);
 
@@ -479,40 +477,4 @@ public class IPrincipal extends AnchorPane {
     }
 
 }
-
-
-
-            /*
-
-            interfaz.setOnMouseDragReleased(new EventHandler<MouseDragEvent>() {
-                @Override
-                public void handle(MouseDragEvent event) {
-                    System.out.println("ai");
-                }
-            });
-
-
-            setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    if (!mouseEvent.isPrimaryButtonDown()) {
-                        getScene().setCursor(Cursor.HAND);
-                        System.out.println(label.getId()+"Entered");
-                    }
-                }
-            });
-
-
-        }
-        private class Delta {
-            double x, y;
-        }
-    }
-
-}
-
-
-
-
-             */
 
