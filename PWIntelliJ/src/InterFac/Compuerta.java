@@ -1,9 +1,7 @@
 package InterFac;
-
 import javafx.scene.image.Image;
-
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+
 
 
 public abstract class Compuerta extends Label {

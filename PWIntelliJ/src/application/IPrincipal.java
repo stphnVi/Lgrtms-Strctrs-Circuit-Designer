@@ -118,7 +118,7 @@ public class IPrincipal extends AnchorPane {
                 } else if (event.getTarget() == not) {
                     label = not;
                     labeImage = not.getImage();
-                    Id= null;
+                    Id= "Not";
                     //System.out.println("not clickeada");
                     InicioInterfaz();
                 } else if (event.getTarget() == usuario) {
@@ -222,13 +222,13 @@ public class IPrincipal extends AnchorPane {
                      *
                      * creación de la linea
                      */
-                    if(Id =="Cero"){
-                        DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX()+10);
-                        DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY()+25);
-                        DoubleProperty PUendX = new SimpleDoubleProperty(event.getX()+10);
-                        DoubleProperty PUendY = new SimpleDoubleProperty(event.getY()+25);
+                    if (Id == "Cero") {
+                        DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX() + 10);
+                        DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY() + 25);
+                        DoubleProperty PUendX = new SimpleDoubleProperty(event.getX() + 10);
+                        DoubleProperty PUendY = new SimpleDoubleProperty(event.getY() + 25);
                         IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY, toAdd);
-                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY,toAdd);
+                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY, toAdd);
                         papel.getChildren().add(PUstart);
                         papel.getChildren().add(PUend);
 
@@ -240,33 +240,58 @@ public class IPrincipal extends AnchorPane {
 
                         event.consume();
 
-                    }else if(Id == "Uno"){
-                        DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX()+10);
-                        DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY()+25);
-                        DoubleProperty PUendX = new SimpleDoubleProperty(event.getX()+10);
-                        DoubleProperty PUendY = new SimpleDoubleProperty(event.getY()+25);
+                    } else if (Id == "Uno") {
+                        DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX() + 10);
+                        DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY() + 25);
+                        DoubleProperty PUendX = new SimpleDoubleProperty(event.getX() + 10);
+                        DoubleProperty PUendY = new SimpleDoubleProperty(event.getY() + 25);
+                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY, toAdd);
+                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY, toAdd);
+                        papel.getChildren().add(PUstart);
+                        papel.getChildren().add(PUend);
+
+                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd);
+                        papel.getChildren().add(PUline);
+
+                        Line PFline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd);
+                        papel.getChildren().add(PFline);
+
+                        event.consume();
+
+                    } else if (Id=="Not"){
+                        //---------------------------------------------------------------------------
+                        DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX() + 10);
+                        DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY() + 37);
+                        DoubleProperty PUendX = new SimpleDoubleProperty(event.getX() + 10);
+                        DoubleProperty PUendY = new SimpleDoubleProperty(event.getY() + 37);
                         IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY,toAdd);
-                        IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY,toAdd);
-                        papel.getChildren().add(PUstart);
-                        papel.getChildren().add(PUend);
+                        PUstart.setId("In1");
 
+                        papel.getChildren().add(PUstart);
                         Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd);
                         papel.getChildren().add(PUline);
+                        //--------------------------------------------------------------------------
+                        DoubleProperty PDstartX = new SimpleDoubleProperty(event.getX() + 145);
+                        DoubleProperty PDstartY = new SimpleDoubleProperty(event.getY() + 37);
+                        DoubleProperty PDendX = new SimpleDoubleProperty(event.getX() + 145);
+                        DoubleProperty PDendY = new SimpleDoubleProperty(event.getY() + 37);
+                        IPrincipal.Anchor PDstart = new IPrincipal.Anchor(Color.BLUEVIOLET, PDstartX, PDstartY, toAdd);
+                        IPrincipal.Anchor PDend = new IPrincipal.Anchor(Color.AQUAMARINE, PDendX, PDendY, toAdd);
+                        PDstart.setId("Sal");
+                        papel.getChildren().add(PDstart);
+                        papel.getChildren().add(PDend);
+                        Line PDline = new IPrincipal.BoundLine(PDstartX, PDstartY, PDendX, PDendY, toAdd);
+                        papel.getChildren().add(PDline);
 
-                        Line PFline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd);
-                        papel.getChildren().add(PFline);
 
-                        event.consume();
 
-                    }else{
+                }else{
                         //---------------------------------------------------------------------------
                         DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY() + 25);
                         DoubleProperty PUendX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PUendY = new SimpleDoubleProperty(event.getY() + 25);
                         IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY,toAdd);
-                        //IPrincipal.Anchor PUend = new IPrincipal.Anchor(Color.AQUAMARINE, PUendX, PUendY,toAdd);
-                        //PUend.setId("EntradaR");
                         PUstart.setId("EntradaS");
                         papel.getChildren().add(PUstart);
                         //papel.getChildren().add(PUend);
@@ -371,10 +396,12 @@ public class IPrincipal extends AnchorPane {
             }
         }
 
+
         // make a node movable by dragging it around with the mouse.
         private void enableDrag(Label toAdd) {
+
             final IPrincipal.Anchor.Delta dragDelta = new IPrincipal.Anchor.Delta();
-            papel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     // record a delta distance for the drag and drop operation.
@@ -383,52 +410,77 @@ public class IPrincipal extends AnchorPane {
                     getScene().setCursor(Cursor.MOVE);
                 }
             });
-            setOnMouseReleased(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
 
-                    getScene().setCursor(Cursor.HAND);
-                    //mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
-                    Anchor circulo = (Anchor)mouseEvent.getPickResult().getIntersectedNode();
-
-                    Compuerta compuerta = circulo.micompuerta;
-                    compuerta.toString();
-                    /*
-                    if (mouseEvent.getPickResult().getIntersectedNode() instanceof Circle) {
-                        System.out.println(mouseEvent.getPickResult().getIntersectedNode());
-                    }else{
-                        System.out.println("un sisout mas");
-                    }
-
-                     */
-
-                }
-            });
 
             setOnMouseDragged(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     double newX = mouseEvent.getX() + dragDelta.x;
+
                     if (mouseEvent.getPickResult().getIntersectedNode() instanceof Circle) {
                         mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
                         System.out.println("noddrrrr");
 
-                    } else {
-                        mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
-
+                    }else{
                         if (newX > 0 && newX < getScene().getWidth()) {
                             setCenterX(newX);
                             System.out.println(mouseEvent.getPickResult().getIntersectedNode() + "Dragged");
+                            //mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
                         }
                         double newY = mouseEvent.getY() + dragDelta.y;
                         if (newY > 0 && newY < getScene().getHeight()) {
                             setCenterY(newY);
                             System.out.println(mouseEvent.getPickResult().getIntersectedNode() + "Dragged");
+                            //mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
                         }
                     }
+
                 }
 
             });
+
+            setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    if (!mouseEvent.isPrimaryButtonDown()) {
+                        getScene().setCursor(Cursor.HAND);
+                    }
+                }
+            });
+            setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+
+                    if (!mouseEvent.isPrimaryButtonDown()) {
+                        getScene().setCursor(Cursor.DEFAULT);
+
+                    }
+                }
+            });
+            setOnMouseReleased(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    System.out.println("terminó");
+                    System.out.println("terminó");
+                    System.out.println("terminó");
+                    System.out.println("terminó");
+                    System.out.println("terminó");
+                    mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
+                    getScene().setCursor(Cursor.HAND);
+
+                }
+            });
+
+        }
+        private class Delta {
+            double x, y;
+        }
+    }
+
+}
+
+
 
             /*
 
@@ -449,7 +501,7 @@ public class IPrincipal extends AnchorPane {
                     }
                 }
             });
-            */
+
 
         }
         private class Delta {
@@ -461,4 +513,6 @@ public class IPrincipal extends AnchorPane {
 
 
 
+
+             */
 
