@@ -2,26 +2,31 @@ package Compuertas;
 
 import InterFac.Compuerta;
 import application.IPrincipal;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 
-public class Nand extends Compuerta {
-
+public class Int extends Compuerta {
     public Image imagen =
-            new Image(getClass().getResourceAsStream("../application/Nand.png"));
-
-
-
+            new Image(getClass().getResourceAsStream("../application/Cero.png"));
     public int Entradas = 0;
     public int Salida = 0;
 
-
-    public Nand(){
+    public Int(){
         this.setGraphic(new ImageView(imagen));
-        this.setId("Nand");
+        this.setId("Int");
+        setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
 
+
+                System.out.println("clickeo en el interruptor");
+            }
+        });
     }
+
 
     @Override
     public void Icono() {
@@ -35,10 +40,14 @@ public class Nand extends Compuerta {
         devolver.onMousePressedProperty();
 
     }
+
+
     public Image getImage() {
         return imagen;
     }
 }
+
+
 
 
 

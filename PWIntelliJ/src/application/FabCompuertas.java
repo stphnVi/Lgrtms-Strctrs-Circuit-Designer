@@ -10,10 +10,8 @@ import InterFac.Compuerta;
 public class FabCompuertas {
     /***
      *
-     *
-     *
      * @return
-     * retorna a las compuertas respectivas por hacer.
+     * retorna a las compuertas respectivas por fabrica.
      */
     public Compuerta getConexion(String compuertita) {
 
@@ -37,6 +35,9 @@ public class FabCompuertas {
             return new Nor();
         } else if (compuertita.equalsIgnoreCase("Usuario")) {
             return new Or();
+        }else if (compuertita.equalsIgnoreCase("Int")){
+            return new Int();
+
         } else {
             return null;
         }
