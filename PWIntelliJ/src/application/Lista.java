@@ -2,17 +2,15 @@ package application;
 
 public class Lista {
     //Lista para el valor de las patillas
-    //debe tener el nombre de las patíllas
-
-
+    //debe tener el nombre de las patillas
     //primer nodo
     private Nodo cabeza;
     private int tamaño;
     //contsructor
-
-
     //AGREGUÉ SETTERS AND GETTERS PARA TAMAÑO, AUNQUE NO ERA NECESARIO
-    Lista(){
+
+
+    public Lista(){
         cabeza = null;
         //tamaño guarda la cantidad de elementos
         setTamaño(0);

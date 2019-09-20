@@ -18,6 +18,7 @@ public class Cero extends Compuerta {
     public int Salida = 0;
 
     public Cero(){
+        this.Entradas = 0;
         this.setGraphic(new ImageView(imagen));
     }
 
@@ -40,6 +41,9 @@ public class Cero extends Compuerta {
         //label.setGraphic(new ImageView(imagen));
 
         return imagen;
+    }
+    public int getint(){
+        return Entradas;
     }
 }
 
