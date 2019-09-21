@@ -7,6 +7,11 @@ import javafx.scene.image.ImageView;
 
 
 public class Nand extends Compuerta {
+    /***
+     * @param
+     * Nand se encargará de operar las compuertas de este tipo segun el id
+     *
+     */
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Nand.png"));

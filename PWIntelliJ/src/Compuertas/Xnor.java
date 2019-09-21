@@ -8,6 +8,11 @@ import javafx.scene.image.ImageView;
 
 
 public class Xnor extends Compuerta {
+    /***
+     * @param
+     * Xnor se encargará de operar las compuertas de este tipo segun el id
+     *
+     */
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Xnor.png"));

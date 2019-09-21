@@ -8,6 +8,11 @@ import javafx.scene.image.ImageView;
 
 
 public class Not extends Compuerta {
+    /***
+     * @param
+     * Not se encargará de operar las compuertas de este tipo segun el id
+     *
+     */
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Not.png"));

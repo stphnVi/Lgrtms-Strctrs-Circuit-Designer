@@ -421,6 +421,12 @@ public class IPrincipal extends AnchorPane {
         });
     }
 
+    /***
+     *
+     *
+     * @param clase que crea la linea
+     *
+     */
 
     class BoundLine extends Line {
         Random r = new Random();
@@ -441,6 +447,13 @@ public class IPrincipal extends AnchorPane {
 
         }
     }
+
+    /***
+     *
+     *
+     * @param clase que crea el circulo
+     *
+     */
     class Anchor extends Circle {
 
         Compuerta micompuerta;

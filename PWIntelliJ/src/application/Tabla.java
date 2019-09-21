@@ -25,8 +25,14 @@ public class Tabla extends Application{
         @FXML
     Button Boperar;
 
+    /***
+     *
+     * @param stage
+     * clase encargada de la creacion de latabla, así como la obtención de datospara mostrarlo
+     */
 
-        @Override
+
+    @Override
         public void start(Stage stage) {
             Scene scene = new Scene(new Group());
             stage.setTitle("Table View Sample");
@@ -38,20 +44,20 @@ public class Tabla extends Application{
 
             //table.setEditable(true);
 
-            TableColumn firstNameCol = new TableColumn("First Name");
+            TableColumn firstNameCol = new TableColumn("entrada");
             firstNameCol.setMinWidth(100);
             firstNameCol.setCellValueFactory(
-                    new PropertyValueFactory<Person, String>("firstName"));
+                    new PropertyValueFactory<Person, String>("entrada"));
 
-            TableColumn lastNameCol = new TableColumn("Last Name");
+            TableColumn lastNameCol = new TableColumn("entrada");
             lastNameCol.setMinWidth(100);
             lastNameCol.setCellValueFactory(
-                    new PropertyValueFactory<Person, String>("lastName"));
+                    new PropertyValueFactory<Person, String>("entrada"));
 
-            TableColumn emailCol = new TableColumn("Email");
+            TableColumn emailCol = new TableColumn("salida");
             emailCol.setMinWidth(200);
             emailCol.setCellValueFactory(
-                    new PropertyValueFactory<Person, String>("email"));
+                    new PropertyValueFactory<Person, String>("salida"));
 
            // table.setItems(data);
            // table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);

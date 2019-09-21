@@ -8,6 +8,11 @@ import javafx.scene.image.ImageView;
 
 
 public class Or extends Compuerta {
+    /***
+     * @param
+     * Or se encargará de operar las compuertas de este tipo segun el id
+     *
+     */
 
     //POR ALGUNA RAZON DAN ERROR
     private Image imagen = new Image(getClass().getResourceAsStream("../application/or.png"));

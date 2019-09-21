@@ -1,5 +1,9 @@
 package application;
 
+/***
+ * @see
+ * Lista se encaga de contener los nodos y operarlos
+ */
 public class Lista {
     //Lista para el valor de las patillas
     //debe tener el nombre de las patillas

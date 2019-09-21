@@ -8,6 +8,11 @@ import javafx.scene.image.ImageView;
 
 
 public class Uno extends Compuerta {
+    /***
+     * @param
+     * Uno de brindar valores de entrada a las compuertas
+     *
+     */
 
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Uno.png"));
