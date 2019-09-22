@@ -25,14 +25,9 @@ public class Tabla extends Application{
         @FXML
     Button Boperar;
 
-    /***
-     *
-     * @param stage
-     * clase encargada de la creacion de latabla, así como la obtención de datospara mostrarlo
-     */
 
+        @Override
 
-    @Override
         public void start(Stage stage) {
             Scene scene = new Scene(new Group());
             stage.setTitle("Table View Sample");
