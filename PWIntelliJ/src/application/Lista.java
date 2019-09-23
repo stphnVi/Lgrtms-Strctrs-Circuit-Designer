@@ -31,7 +31,7 @@ public class Lista {
         setTamaño(getTamaño() + 1);
     }
 
-    Object ver(int indice) {
+    public Object ver(int indice) {
         Nodo temp = cabeza;
         for(int i=0; i<indice; i++) {
             temp = temp.VerSig();

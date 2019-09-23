@@ -2,6 +2,7 @@ package Compuertas;
 
 import InterFac.Compuerta;
 import application.IPrincipal;
+import application.Lista;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,27 +18,35 @@ public class And extends Compuerta {
             new Image(getClass().getResourceAsStream("../application/And.png"));
   //  public Label label = new Label();
 
-
+    private int n=0;
     public int Entradas = 0;
     public int Salida = 0;
 
     public And(){
         this.setGraphic(new ImageView(imagen));
         this.setId("And");
-
     }
     @Override
-    public void Icono() {
+    public void Operar(Lista x) {
+
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
+        if(x.ver(n).equals(1) && x.ver(n+2).equals(1) ){
 
-        System.out.print("Se ha creado una compuerta AND");
-        IPrincipal devolver = new IPrincipal();
-        devolver.onMousePressedProperty();
+            System.out.print("repuesta: "+1+"\n");
+
+
+
+        }else{
+            System.out.print("repuesta: "+0+"\n");
+
+        }
 
     }
+
+
 /*
     public void Operacion(int in , int out){
 

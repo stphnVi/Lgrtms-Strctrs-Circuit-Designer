@@ -35,8 +35,6 @@ public class FabCompuertas {
             return new Nor();
         } else if (compuertita.equalsIgnoreCase("Usuario")) {
             return new Or();
-        }else if (compuertita.equalsIgnoreCase("Int")){
-            return new Int();
 
         } else {
             return null;

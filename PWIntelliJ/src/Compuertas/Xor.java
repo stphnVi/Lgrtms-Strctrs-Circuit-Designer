@@ -2,6 +2,7 @@ package Compuertas;
 
 import InterFac.Compuerta;
 import application.IPrincipal;
+import application.Lista;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +18,7 @@ public class Xor extends Compuerta {
     public Image imagen =
             new Image(getClass().getResourceAsStream("../application/Xor.png"));
 
-
+    private int n = 0;
 
     public int Entradas = 0;
     public int Salida = 0;
@@ -30,15 +31,24 @@ public class Xor extends Compuerta {
 
 
     @Override
-    public void Icono() {
+    public void Operar(Lista x) {
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
+        if(x.ver(n).equals(1) && x.ver(n+2).equals(1) ){
 
-        System.out.print("Se ha creado una compuerta AND");
-        IPrincipal devolver = new IPrincipal();
-        devolver.onMousePressedProperty();
+            System.out.print("repuesta: "+0+"\n");
+
+        }else if(x.ver(n).equals(0) && x.ver(n+2).equals(0)){
+            System.out.print("repuesta: "+0+"\n");
+
+        }else{
+            System.out.print("repuesta: "+1+"\n");
+
+        }
+
+
 
     }
 /*

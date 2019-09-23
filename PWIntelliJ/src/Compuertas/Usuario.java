@@ -2,6 +2,7 @@ package Compuertas;
 
 import InterFac.Compuerta;
 import application.IPrincipal;
+import application.Lista;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,15 +24,14 @@ public class Usuario extends Compuerta {
     }
 
     @Override
-    public void Icono() {
+    public void Operar(Lista x) {
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
 
         System.out.print("Se ha creado una compuerta AND");
-        IPrincipal devolver = new IPrincipal();
-        devolver.onMousePressedProperty();
+
 
     }
 

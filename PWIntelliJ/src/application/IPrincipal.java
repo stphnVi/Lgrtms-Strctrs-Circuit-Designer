@@ -29,6 +29,7 @@ public class IPrincipal extends AnchorPane {
     private Label label = new Label();
     private String Id = null;
     Lista lista1 = new Lista();
+    private int n = 0;
 
     Alert alerta = new Alert(Alert.AlertType.ERROR);
 
@@ -92,8 +93,6 @@ public class IPrincipal extends AnchorPane {
         paleta.getChildren().add(xnor);
         Compuerta usuario = fabrica.getConexion("Usuario");
         paleta.getChildren().add(usuario);
-        Compuerta inte = fabrica.getConexion("Int");
-        paleta.getChildren().add(inte);
 
 
 
@@ -106,12 +105,6 @@ public class IPrincipal extends AnchorPane {
                     labeImage = and.getImage();
                     Id= null;
                     InicioInterfaz();
-                }else if(event.getTarget()==inte){
-                    label = inte;
-                    labeImage= inte.getImage();
-                    Id=null;
-                    InicioInterfaz();
-
 
                 } else if (event.getTarget() == or) {
                     label = or;
@@ -493,17 +486,22 @@ public class IPrincipal extends AnchorPane {
             setOnMouseReleased(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    System.out.println("terminó");
-                    System.out.println("terminó");
-                    System.out.println("terminó");
-                    System.out.println("terminó");
+                    n++;
+
+                    if(toAdd.getId()=="Uno"){
+                        lista1.agregarDelante(1);
+                    }else if(toAdd.getId()=="Cero"){
+                        lista1.agregarDelante(0);
+                    }
+
+                    if(n==2) {
+                        FabCompuertas op = new FabCompuertas();
+                        Compuerta operar = op.getConexion(mouseEvent.getPickResult().getIntersectedNode().getId());
+                        operar.Operar(lista1);
+                    }
 
 
-                    lista1.agregarDelante(1);
-                    lista1.agregarDelante(toAdd.getId());
-                    System.out.println(mouseEvent.getPickResult().getIntersectedNode() instanceof Circle);
-                    System.out.println(mouseEvent.getPickResult().getIntersectedNode());
-                    Nodo n  = new Nodo(mouseEvent.getPickResult().getIntersectedNode());
+                    lista1.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
                     mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
                     getScene().setCursor(Cursor.HAND);
 
@@ -519,10 +517,19 @@ public class IPrincipal extends AnchorPane {
     private void boton(){
         try {
             System.out.println("se extrae" + lista1.ver(0));
+            System.out.println("se extrae" + lista1.ver(1));
+            System.out.println("se extrae" + lista1.ver(2));
+            System.out.println("se extrae" + lista1.ver(3));
+            System.out.println("valor de n:  " + n +"  " +(n-2));
+
 
         }catch(Exception e){
             alerta.show();
         }
+    }
+
+    public Lista getLista1() {
+        return lista1;
     }
 }
 
