@@ -23,7 +23,7 @@ public class Or extends Compuerta {
         this.setId("Or");
     }
     @Override
-    public void Operar(Lista x) {
+    public void Operar(Lista x, int n) {
         /***
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa

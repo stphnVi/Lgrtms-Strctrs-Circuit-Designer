@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 public abstract class Compuerta extends Label {
 
-    public abstract void Operar(Lista x);
+    public abstract void Operar(Lista x, int cont);
 
     public abstract Image getImage();
 

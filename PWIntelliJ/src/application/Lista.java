@@ -19,7 +19,7 @@ public class Lista {
         //tamaño guarda la cantidad de elementos
         setTamaño(0);
     }
-    void agregarDelante(Object o) {
+    public void agregarDelante(Object o) {
         if(cabeza ==null){
             cabeza = new Nodo(o);
         }else {
@@ -28,7 +28,22 @@ public class Lista {
             nuevo.agregar(temp);
             cabeza = nuevo;
         }
-        setTamaño(getTamaño() + 1);
+        tamaño++;
+        //setTamaño(getTamaño() + 1);
+    }
+    public void eliminar(int index){
+        if(index ==0){
+            cabeza =cabeza.VerSig();
+        }else{
+            int contador = 0;
+            Nodo temp = cabeza;
+            while(contador< index-1){
+                temp = temp.VerSig();
+                contador++;
+            }
+            temp.agregar(temp.VerSig().VerSig());
+        }
+        tamaño--;
     }
 
     public Object ver(int indice) {
@@ -38,11 +53,15 @@ public class Lista {
         }
         return temp.VerDato();
     }
+
+
+
     public int getTamaño() {
         return tamaño;
     }
     public void setTamaño(int tamaño) {
         this.tamaño = tamaño;
     }
+
 }
 
