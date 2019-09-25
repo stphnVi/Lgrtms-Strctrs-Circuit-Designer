@@ -188,6 +188,7 @@ public class IPrincipal extends AnchorPane {
          *
          */
 
+
         label.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             /***
@@ -547,6 +548,8 @@ public class IPrincipal extends AnchorPane {
                 System.out.println("se extrae" + lista1.ver(d));
 
             }
+            Tabla abrir = new Tabla();
+            abrir.start();
             System.out.println("valor de n:  " + n);
 
 
