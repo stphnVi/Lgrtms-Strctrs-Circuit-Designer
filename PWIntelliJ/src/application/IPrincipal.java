@@ -1,4 +1,5 @@
 package application;
+
 import Compuertas.Cero;
 import InterFac.Compuerta;
 import javafx.beans.property.*;
@@ -14,6 +15,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+
 import java.util.Random;
 
 
@@ -30,10 +32,11 @@ public class IPrincipal extends AnchorPane {
     private String Id = null;
     Lista lista1 = new Lista();
     private int n = 0;
-
+    /***
+     * @see
+     * alerta (excepción cuando se presiona el boton y el circuito aun no está terminado)
+     */
     Alert alerta = new Alert(Alert.AlertType.ERROR);
-
-
 
 
     @FXML
@@ -46,6 +49,7 @@ public class IPrincipal extends AnchorPane {
     StackPane interfaz;
     @FXML
     Button Boperar;
+
     public IPrincipal() {
 
     }
@@ -95,70 +99,68 @@ public class IPrincipal extends AnchorPane {
         paleta.getChildren().add(usuario);
 
 
-
-
         paleta.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if (event.getTarget() == and) {
                     label = and;
                     labeImage = and.getImage();
-                    Id= null;
+                    Id = null;
                     InicioInterfaz();
 
                 } else if (event.getTarget() == or) {
                     label = or;
                     labeImage = or.getImage();
-                    Id= null;
+                    Id = null;
                     InicioInterfaz();
                 } else if (event.getTarget() == nor) {
                     label = nor;
                     labeImage = nor.getImage();
-                    Id= null;
+                    Id = null;
                     InicioInterfaz();
                 } else if (event.getTarget() == xor) {
                     label = xor;
                     labeImage = xor.getImage();
-                    Id= null;
+                    Id = null;
                     InicioInterfaz();
                 } else if (event.getTarget() == xnor) {
                     label = xnor;
                     labeImage = xnor.getImage();
-                    Id= null;
+                    Id = null;
                     InicioInterfaz();
                 } else if (event.getTarget() == uno) {
                     label = uno;
                     labeImage = uno.getImage();
                     label.setId("Uno");
-                    Id="Uno";
+                    Id = "Uno";
                     InicioInterfaz();
                 } else if (event.getTarget() == cero) {
                     label = cero;
                     labeImage = cero.getImage();
                     label.setId("Cero");
-                    Id="Cero";
-                   // System.out.println("cero clickeada");
+                    Id = "Cero";
+                    // System.out.println("cero clickeada");
                     InicioInterfaz();
                 } else if (event.getTarget() == not) {
                     label = not;
                     labeImage = not.getImage();
-                    Id= "Not";
+                    Id = "Not";
                     //System.out.println("not clickeada");
                     InicioInterfaz();
                 } else if (event.getTarget() == usuario) {
                     label = usuario;
                     labeImage = usuario.getImage();
-                    Id= null;
+                    Id = null;
                     //System.out.println("usuario clickeada");
                     InicioInterfaz();
-                }else if (event.getTarget() == nand) {
+                } else if (event.getTarget() == nand) {
                     label = nand;
                     labeImage = nand.getImage();
-                    Id= null;
+                    Id = null;
                     //System.out.println("nand clickeada");
                     InicioInterfaz();
                 } else {
-                    Id= null;
+                    Id = null;
 
                 }
             }
@@ -190,7 +192,7 @@ public class IPrincipal extends AnchorPane {
              * regresa para seguir el curso
              */
             public void handle(MouseEvent event) {
-               // System.out.println("se ha seleccionado la compuerta");
+                // System.out.println("se ha seleccionado la compuerta");
                 Dragboard db = label.startDragAndDrop(TransferMode.MOVE);
                 ClipboardContent content = new ClipboardContent();
                 content.putString(label.getStyle());
@@ -223,7 +225,7 @@ public class IPrincipal extends AnchorPane {
              */
             public void handle(DragEvent event) {
                 //System.out.println("SetOnDragExited-Entrada");
-               // System.out.println(event.getPickResult().getIntersectedNode());
+                // System.out.println(event.getPickResult().getIntersectedNode());
                 /***
                  *
                  * replicas de las compuertas
@@ -249,10 +251,10 @@ public class IPrincipal extends AnchorPane {
                         papel.getChildren().add(PUstart);
                         papel.getChildren().add(PUend);
 
-                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd,PUstart,PUend);
+                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd, PUstart, PUend);
                         papel.getChildren().add(PUline);
 
-                        Line PFline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd,PUstart,PUend);
+                        Line PFline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd, PUstart, PUend);
                         papel.getChildren().add(PFline);
 
                         event.consume();
@@ -267,25 +269,25 @@ public class IPrincipal extends AnchorPane {
                         papel.getChildren().add(PUstart);
                         papel.getChildren().add(PUend);
 
-                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd,PUstart,PUend);
+                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd, PUstart, PUend);
                         papel.getChildren().add(PUline);
 
-                        Line PFline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd,PUstart,PUend);
+                        Line PFline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd, PUstart, PUend);
                         papel.getChildren().add(PFline);
 
                         event.consume();
 
-                    } else if (Id=="Not"){
+                    } else if (Id == "Not") {
                         //---------------------------------------------------------------------------
                         DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY() + 37);
                         DoubleProperty PUendX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PUendY = new SimpleDoubleProperty(event.getY() + 37);
-                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY,toAdd);
+                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY, toAdd);
                         PUstart.setId("In1");
 
                         papel.getChildren().add(PUstart);
-                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd,PUstart,null);
+                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd, PUstart, null);
                         papel.getChildren().add(PUline);
                         //--------------------------------------------------------------------------
                         DoubleProperty PDstartX = new SimpleDoubleProperty(event.getX() + 145);
@@ -297,22 +299,21 @@ public class IPrincipal extends AnchorPane {
                         PDstart.setId("Sal");
                         papel.getChildren().add(PDstart);
                         papel.getChildren().add(PDend);
-                        Line PDline = new IPrincipal.BoundLine(PDstartX, PDstartY, PDendX, PDendY, toAdd,PUstart,null);
+                        Line PDline = new IPrincipal.BoundLine(PDstartX, PDstartY, PDendX, PDendY, toAdd, PUstart, null);
                         papel.getChildren().add(PDline);
 
 
-
-                }else{
+                    } else {
                         //---------------------------------------------------------------------------
                         DoubleProperty PUstartX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PUstartY = new SimpleDoubleProperty(event.getY() + 25);
                         DoubleProperty PUendX = new SimpleDoubleProperty(event.getX() + 10);
                         DoubleProperty PUendY = new SimpleDoubleProperty(event.getY() + 25);
-                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY,toAdd);
+                        IPrincipal.Anchor PUstart = new IPrincipal.Anchor(Color.BLACK, PUstartX, PUstartY, toAdd);
                         PUstart.setId("EntradaS");
                         papel.getChildren().add(PUstart);
 
-                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd,PUstart,null);
+                        Line PUline = new IPrincipal.BoundLine(PUstartX, PUstartY, PUendX, PUendY, toAdd, PUstart, null);
                         PUline.setId("Pat1");
                         papel.getChildren().add(PUline);
                         //--------------------------------------------------------------------------
@@ -326,7 +327,7 @@ public class IPrincipal extends AnchorPane {
                         papel.getChildren().add(PDstart);
                         //papel.getChildren().add(PDend);
 
-                        Line PDline = new IPrincipal.BoundLine(PDstartX, PDstartY, PDendX, PDendY, toAdd,PUstart,null);
+                        Line PDline = new IPrincipal.BoundLine(PDstartX, PDstartY, PDendX, PDendY, toAdd, PUstart, null);
                         PDline.setId("Pat2");
                         papel.getChildren().add(PDline);
                         //-------------------------------------------------------------------------
@@ -334,15 +335,15 @@ public class IPrincipal extends AnchorPane {
                         DoubleProperty PFstartY = new SimpleDoubleProperty(event.getY() + 37);
                         DoubleProperty PFendX = new SimpleDoubleProperty(event.getX() + 145);
                         DoubleProperty PFendY = new SimpleDoubleProperty(event.getY() + 37);
-                        IPrincipal.Anchor PFstart = new IPrincipal.Anchor(Color.BLUEVIOLET, PFstartX, PFstartY,toAdd);
-                        IPrincipal.Anchor PFend = new IPrincipal.Anchor(Color.AQUAMARINE, PFendX, PFendY,toAdd);
+                        IPrincipal.Anchor PFstart = new IPrincipal.Anchor(Color.BLUEVIOLET, PFstartX, PFstartY, toAdd);
+                        IPrincipal.Anchor PFend = new IPrincipal.Anchor(Color.AQUAMARINE, PFendX, PFendY, toAdd);
 
                         PFend.setId("salidaR");
                         PFstart.setId("salidaS");
                         papel.getChildren().add(PFstart);
                         papel.getChildren().add(PFend);
 
-                        Line PFline = new IPrincipal.BoundLine(PFstartX, PFstartY, PFendX, PFendY, toAdd,PUstart,null);
+                        Line PFline = new IPrincipal.BoundLine(PFstartX, PFstartY, PFendX, PFendY, toAdd, PUstart, null);
                         PDline.setId("Sal");
                         papel.getChildren().add(PFline);
 
@@ -376,16 +377,17 @@ public class IPrincipal extends AnchorPane {
         Random r = new Random();
         Random g = new Random();
         Random b = new Random();
-        BoundLine(DoubleProperty startX, DoubleProperty startY, DoubleProperty endX, DoubleProperty endY, Label toAdd,Anchor cirS, Anchor cirE) {
+
+        BoundLine(DoubleProperty startX, DoubleProperty startY, DoubleProperty endX, DoubleProperty endY, Label toAdd, Anchor cirS, Anchor cirE) {
             startXProperty().bind(startX);
             startYProperty().bind(startY);
             endXProperty().bind(endX);
             endYProperty().bind(endY);
             setStrokeWidth(2);
-            int R = r.nextInt(255)+1;
-            int G = g.nextInt(255)+1;
-            int B = b.nextInt(255)+1;
-            setStroke(Color.rgb(R,G,B));
+            int R = r.nextInt(255) + 1;
+            int G = g.nextInt(255) + 1;
+            int B = b.nextInt(255) + 1;
+            setStroke(Color.rgb(R, G, B));
             setStrokeLineCap(StrokeLineCap.BUTT);
             setMouseTransparent(true);
 
@@ -446,7 +448,7 @@ public class IPrincipal extends AnchorPane {
                         mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(true);
                         //System.out.println("noddrrrr");
 
-                    }else{
+                    } else {
                         if (newX > 0 && newX < getScene().getWidth()) {
                             setCenterX(newX);
                             //System.out.println(mouseEvent.getPickResult().getIntersectedNode() + "Dragged");
@@ -488,18 +490,18 @@ public class IPrincipal extends AnchorPane {
                 public void handle(MouseEvent mouseEvent) {
                     n++;
                     System.out.println(n);
-                    if(toAdd.getId()=="Uno"){
+                    if (toAdd.getId() == "Uno") {
                         lista1.agregarDelante(1);
-                    }else if(toAdd.getId()=="Cero"){
+                    } else if (toAdd.getId() == "Cero") {
                         lista1.agregarDelante(0);
                     }
 
-                    if(n%2==0) {
+                    if (n % 2 == 0) {
                         FabCompuertas op = new FabCompuertas();
                         Compuerta operar = op.getConexion(mouseEvent.getPickResult().getIntersectedNode().getId());
                         lista1.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
                         lista1.getTamaño();
-                        operar.Operar(lista1,n);
+                        operar.Operar(lista1, n);
                     }
                     mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
                     getScene().setCursor(Cursor.HAND);
@@ -508,22 +510,23 @@ public class IPrincipal extends AnchorPane {
             });
 
         }
+
         private class Delta {
             double x, y;
         }
     }
 
-    private void boton(){
+    private void boton() {
         try {
 
-            for(int d=0;d <= 3; d++){
+            for (int d = 0; d <= lista1.getTamaño()-1; d++) {
                 System.out.println("se extrae" + lista1.ver(d));
 
             }
-            System.out.println("valor de n:  " + n +"  " +(n-2));
+            System.out.println("valor de n:  " + n + "  " + (n - 2));
 
 
-        }catch(Exception e){
+        } catch (Exception e) {
             alerta.show();
         }
     }

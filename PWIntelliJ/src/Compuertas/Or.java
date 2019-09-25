@@ -29,14 +29,15 @@ public class Or extends Compuerta {
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
 
-        if(x.ver(n).equals(0) && x.ver(n+2).equals(0) ){
-
+        if(x.ver(1).equals(0) && x.ver(2).equals(0) ){
+            x.agregarDelante(0);
             System.out.print("repuesta: "+0+"\n");
-
-
+            System.out.println("----------");
 
         }else{
+            x.agregarDelante(1);
             System.out.print("repuesta: "+1+"\n");
+            System.out.println("----------");
 
         }
 

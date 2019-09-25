@@ -36,15 +36,23 @@ public class Xor extends Compuerta {
          * @see
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
-        if(x.ver(n).equals(1) && x.ver(n+2).equals(1) ){
-
+        if(x.ver(1).equals(1) && x.ver(2).equals(1) ){
             System.out.print("repuesta: "+0+"\n");
+            x.agregarDelante(0);
+            System.out.println("----------");
 
-        }else if(x.ver(n).equals(0) && x.ver(n+2).equals(0)){
+
+        }else if(x.ver(1).equals(0) && x.ver(2).equals(0)){
             System.out.print("repuesta: "+0+"\n");
+            x.agregarDelante(0);
+            System.out.println("----------");
+
 
         }else{
             System.out.print("repuesta: "+1+"\n");
+            x.agregarDelante(1);
+            System.out.println("----------");
+
 
         }
 
