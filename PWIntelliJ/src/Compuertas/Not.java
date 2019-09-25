@@ -37,7 +37,7 @@ public class Not extends Compuerta {
          * devuelve a la Iprincipal para seguir con el curso del programa
          */
 
-        System.out.print("Se ha creado una compuerta AND");
+        System.out.print("Se ha creado una compuerta Not");
 
 
     }

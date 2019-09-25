@@ -429,6 +429,7 @@ public class IPrincipal extends AnchorPane {
             setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+
                     String Ini = label.getId();
                     // record a delta distance for the drag and drop operation.
                     dragDelta.x = getCenterX() - mouseEvent.getX();
@@ -495,13 +496,31 @@ public class IPrincipal extends AnchorPane {
                     } else if (toAdd.getId() == "Cero") {
                         lista1.agregarDelante(0);
                     }
+                    if(mouseEvent.getPickResult().getIntersectedNode().getId() =="Not"){
+                        if(lista1.ver(0).equals(0)) {
+                            lista1.eliminar(0);
+                            lista1.agregarDelante(1);
+                            System.out.println("NOOOT/000");
+                            n--;
+                        }else{
+                            lista1.eliminar(0);
+                            lista1.agregarDelante(1);
+                            System.out.println("NOOOT/111");
+                            n--;
+                        }
+
+                    }
 
                     if (n % 2 == 0) {
-                        FabCompuertas op = new FabCompuertas();
-                        Compuerta operar = op.getConexion(mouseEvent.getPickResult().getIntersectedNode().getId());
-                        lista1.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
-                        lista1.getTamaño();
-                        operar.Operar(lista1, n);
+                        if(mouseEvent.getPickResult().getIntersectedNode().getId() == "Not"){
+                            System.out.println("No se intriduce");
+                        }else {
+                            FabCompuertas op = new FabCompuertas();
+                            Compuerta operar = op.getConexion(mouseEvent.getPickResult().getIntersectedNode().getId());
+                            lista1.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
+                            lista1.getTamaño();
+                            operar.Operar(lista1, n);
+                        }
                     }
                     mouseEvent.getPickResult().getIntersectedNode().setMouseTransparent(false);
                     getScene().setCursor(Cursor.HAND);
