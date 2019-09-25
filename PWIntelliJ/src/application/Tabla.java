@@ -2,8 +2,10 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+
 import java.awt.*;
+import java.awt.Button;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -15,27 +17,22 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class Tabla{
+public class Tabla extends AnchorPane {
         @FXML
     TableView Tabla;
         @FXML
     Button Boperar;
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
 
-        public Tabla(){
-
-        }
-
-
-
-        public void start() {
+        public void start(Lista lista1) {
             try{
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("Tabla.fxml"));
@@ -48,13 +45,26 @@ public class Tabla{
                 stage.setTitle("New Window");
                 stage.setScene(scene);
                 stage.show();
+                IniTabla(lista1);
+
             }catch (IOException e){
+                alerta.setContentText("Se ha fallado al tratar de abrir la vetana, termine el circuito o ");
                 System.out.println("se ha fallado al tratar de abrir la tabla de verdad");
             }
 
 
+            }
 
+    public void IniTabla(Lista lista1){
+            //inicio de intriduccion de los datos a la tabla de verdad
+            //buscar observable list
+            TableView <> = new TableView<>();
+            TableColumn<>= new TableColumn<>();
+            tVerdad.setEditable(true);
+            for(int i=0; i <= lista1.getTamaño()-1; i++){
 
+            tVerdad.getColumns().Add(lista1.ver(i));
+            }
 
 
 

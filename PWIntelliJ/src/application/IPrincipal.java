@@ -549,7 +549,7 @@ public class IPrincipal extends AnchorPane {
 
             }
             Tabla abrir = new Tabla();
-            abrir.start();
+            abrir.start(lista1);
             System.out.println("valor de n:  " + n);
 
 
