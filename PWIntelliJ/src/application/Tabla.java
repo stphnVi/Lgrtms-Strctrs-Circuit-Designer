@@ -33,7 +33,9 @@ public class Tabla extends Application{
             stage.setTitle("Table View Sample");
             stage.setWidth(450);
             stage.setHeight(500);
-
+            stage.setScene(scene);
+            stage.show();
+                /*
             final Label label = new Label("Address Book");
             label.setFont(new Font("Arial", 20));
 
@@ -64,8 +66,7 @@ public class Tabla extends Application{
 
             ((Group) scene.getRoot()).getChildren().addAll(vbox);
 
-            stage.setScene(scene);
-            stage.show();
+
         }
 
         public static class Person {
@@ -103,5 +104,7 @@ public class Tabla extends Application{
             public void setEmail(String fName) {
                 email.set(fName);
             }
+
+                 */
         }
 }

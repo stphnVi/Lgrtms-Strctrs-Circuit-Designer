@@ -6,7 +6,11 @@ import javafx.beans.property.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +19,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.stage.Stage;
 
 import java.util.Random;
 
@@ -542,7 +547,7 @@ public class IPrincipal extends AnchorPane {
                 System.out.println("se extrae" + lista1.ver(d));
 
             }
-            System.out.println("valor de n:  " + n + "  " + (n - 2));
+            System.out.println("valor de n:  " + n);
 
 
         } catch (Exception e) {
