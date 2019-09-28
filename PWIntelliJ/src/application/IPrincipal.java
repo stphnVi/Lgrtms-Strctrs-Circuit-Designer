@@ -36,6 +36,7 @@ public class IPrincipal extends AnchorPane {
     private Label label = new Label();
     private String Id = null;
     Lista lista1 = new Lista();
+    Lista ListComp = new Lista();
     private int n = 0;
     /***
      * @see
@@ -79,7 +80,11 @@ public class IPrincipal extends AnchorPane {
                 boton();
             }
         });
-
+        /***
+         *
+         * @see
+         * creación de las compuertas  e intriducción en la paleta
+         */
 
         FabCompuertas fabrica = new FabCompuertas();
         Compuerta uno = fabrica.getConexion("Uno");
@@ -104,6 +109,12 @@ public class IPrincipal extends AnchorPane {
         paleta.getChildren().add(usuario);
 
 
+        /***
+         *
+         * @param
+         * si se clickea, entonces se genera un label con el id de la compuerta seleccionada
+         *   y se inicia con la interfaz
+         */
         paleta.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -172,6 +183,13 @@ public class IPrincipal extends AnchorPane {
         });
     }
 
+    /***
+     * @see
+     * InicioInterfaz
+     * es la encargada del manejo de la interfaz gráfica y todos los compoentes que se mueven o
+     * se generan en ella
+     *
+     */
 
     private void InicioInterfaz() {
 
@@ -233,8 +251,10 @@ public class IPrincipal extends AnchorPane {
                 //System.out.println("SetOnDragExited-Entrada");
                 // System.out.println(event.getPickResult().getIntersectedNode());
                 /***
-                 *
+                 * @see
                  * replicas de las compuertas
+                 * Generar compuertas con entradas y salidas, para posteriormente generar la linea
+                 *
                  */
                 FabCompuertas fabrica = new FabCompuertas();
                 Compuerta toAdd = fabrica.getConexion(label.getId());
@@ -428,6 +448,12 @@ public class IPrincipal extends AnchorPane {
             }
         }
 
+        /***
+         *
+         * @param toAdd
+         * to add es la compuerta que se ha generado para poder moverla en la interfaz gráfica
+         * los siguientes métodos son los encargados de permitir el movimiento en la linea
+         */
 
         // make a node movable by dragging it around with the mouse.
         private void enableDrag(Label toAdd) {
@@ -492,14 +518,28 @@ public class IPrincipal extends AnchorPane {
                     }
                 }
             });
+            /***
+             * @see
+             * este metodo se encarga de la intriduccion de elementos de la listas, y de enviar la lista a operar en su respectiva compuerta
+             *
+             */
             setOnMouseReleased(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+                   // pruebas.agregarDelante(7);
                     n++;
                     System.out.println(n);
+
                     if (toAdd.getId() == "Uno") {
+                        //ListComp.agregarDelante(1);
+                        ListComp.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
+                        //ListComp.agregarDelante(toAdd.getId());
                         lista1.agregarDelante(1);
+
                     } else if (toAdd.getId() == "Cero") {
+                        //ListComp.agregarDelante(0);
+                        ListComp.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
+                        //ListComp.agregarDelante(toAdd.getId());
                         lista1.agregarDelante(0);
                     }
                     if(mouseEvent.getPickResult().getIntersectedNode().getId() =="Not"){
@@ -518,11 +558,14 @@ public class IPrincipal extends AnchorPane {
                     }
 
                     if (n % 2 == 0) {
+                        //ListComp.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
                         if(mouseEvent.getPickResult().getIntersectedNode().getId() == "Not"){
-                            System.out.println("No se intriduce");
+                            System.out.println("No se introduce");
                         }else {
                             FabCompuertas op = new FabCompuertas();
                             Compuerta operar = op.getConexion(mouseEvent.getPickResult().getIntersectedNode().getId());
+                            //ListComp.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
+                            operar.Operar(ListComp, 0);
                             lista1.agregarDelante(mouseEvent.getPickResult().getIntersectedNode().getId());
                             lista1.getTamaño();
                             operar.Operar(lista1, n);
@@ -541,16 +584,28 @@ public class IPrincipal extends AnchorPane {
         }
     }
 
+    /***
+     * @param boton
+     * se encarga de llamar la clase de la tabla para posteriormente mostrarla en una tabla nueva en la interfaz
+     */
     private void boton() {
-        try {
 
+        try {
             for (int d = 0; d <= lista1.getTamaño()-1; d++) {
                 System.out.println("se extrae" + lista1.ver(d));
-
             }
-            Tabla abrir = new Tabla();
-            abrir.start(lista1);
+
+            for (int d = 0; d <= ListComp.getTamaño()-1; d++) {
+                System.out.println("se extrae lista nueva: " + ListComp.ver(d) + d);
+            }
+
             System.out.println("valor de n:  " + n);
+
+            Tabla abrir = new Tabla();
+            Stage stage = new Stage();
+            abrir.start(lista1, stage);
+
+
 
 
         } catch (Exception e) {
